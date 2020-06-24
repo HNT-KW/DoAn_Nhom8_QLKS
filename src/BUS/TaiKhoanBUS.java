@@ -10,6 +10,7 @@ import DAO.TaiKhoanDAO;
 import DTO.NhanVien;
 import DTO.TaiKhoan;
 import GUI.ThongBao;
+import Tools.TableUtil;
 import java.util.ArrayList;
 import javax.swing.JCheckBox;
 import javax.swing.JTable;
@@ -152,6 +153,16 @@ public class TaiKhoanBUS
 			TaiKhoanDAO.add(tk);
 		}
 	}
+        // Xóa
+	public static void delete(JTable tbltkData)
+	{
+		int matk = TableUtil.getMaFromTable(tbltkData);
+		if (matk != 1) {
+			TaiKhoanDAO tkDAO = new TaiKhoanDAO();
+                        tkDAO.delete(matk);
+		}
+	}
+        
 	
 	public static void edit(JTextField formTenTK, JTextField formMK, JCheckBox formQ, JTextField formMaNV)
 	{

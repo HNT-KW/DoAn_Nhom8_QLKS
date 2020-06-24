@@ -38,4 +38,8 @@ public class ThongBao
 		// Write to file log.txt
 		System.out.print(message);
 	}
+
+    public static void noitice(String sửa_thành_công, String đăng_nhập_lại_để_sửa_hoàn_tất) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }

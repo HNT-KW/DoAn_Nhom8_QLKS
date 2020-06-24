@@ -63,11 +63,11 @@ public class PhongGUI
         int i=0;
         for (ChiTietHoaDon cthd : listcthd)
         {                           
-            data[i][0] = cthd.getPhieuThuePhong().getMaPHG();      
-            data[i][1] =PhongBUS.getTenLPhg(PhongBUS.getPhong(cthd.getPhieuThuePhong().getMaPHG()).getMaloaiphg()) ;
+            data[i][0] = cthd.getM_ptp().getMaPHG();      
+            data[i][1] =PhongBUS.getTenLPhg(PhongBUS.getPhong(cthd.getM_ptp().getMaPHG()).getMaloaiphg()) ;
             data[i][2] = hoadonkh.getNgayLap();
-			data[i][3]=cthd.getPhieuThuePhong().getNgayDi();
-            data[i][4] =PhongBUS.getGiaLPhg(PhongBUS.getPhong(cthd.getPhieuThuePhong().getMaPHG()).getMaloaiphg());           
+			data[i][3]=cthd.getM_ptp().getNgayDi();
+            data[i][4] =PhongBUS.getGiaLPhg(PhongBUS.getPhong(cthd.getM_ptp().getMaPHG()).getMaloaiphg());           
             i++;
         }
         TableModel tableModel = new DefaultTableModel(data, columnNames);

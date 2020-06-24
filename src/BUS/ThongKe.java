@@ -83,7 +83,7 @@ public class ThongKe
 		
 		for (PhieuDichVu pdv : dspdv)
 			for (DichVu dv : dsdv)
-				if (pdv.getMaDV() == dv.getMaDV())
+				if (pdv.getM_madv() == dv.getMaDV())
 				{
 					int id = dsdv.indexOf(dv);
 					dstk.set(id, dstk.get(id)+1);

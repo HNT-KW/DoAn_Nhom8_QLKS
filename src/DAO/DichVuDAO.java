@@ -11,6 +11,7 @@ import java.util.ArrayList;
 
 import DTO.DichVu;
 import GUI.ThongBao;
+import UTILS.Database;
 
 /**
  *
@@ -25,7 +26,7 @@ public class DichVuDAO
 		Database DB = new Database();
 		DB.connect();
 
-		ResultSet rs = DB.execution("SELECT * FROM DichVu");
+		ResultSet rs = DB.execution("SELECT * FROM dichvu");
 		
 		try
 		{
@@ -41,7 +42,7 @@ public class DichVuDAO
 		}
 		catch(SQLException e)
 		{
-			ThongBao.warning("[DichVuDAO:load] "+e);
+			ThongBao.warning("[dichvuDAO:load] "+e);
 		}
 		
 		DB.disconnect();
@@ -66,12 +67,13 @@ public class DichVuDAO
 				dv.setMoTa(rs.getString(3));
 				dv.setGia(rs.getInt(4));
 				DB.disconnect();
+                                
 				return dv;
 			}
 		}
 		catch(SQLException e)
 		{
-			ThongBao.warning("[DichVuDAO:getDichVu] "+e);
+			ThongBao.warning("[dichvuDAO:getdichvu] "+e);
 		}
 		
 		DB.disconnect();
@@ -92,7 +94,7 @@ public class DichVuDAO
 				return newid;
 			}
 		} catch (SQLException e) {
-			ThongBao.warning("[DichVuDAO:getNewID] " + e);
+			ThongBao.warning("[dichvuDAO:getNewID] " + e);
 		}
 
 		DB.disconnect();
@@ -100,16 +102,16 @@ public class DichVuDAO
 		return -1;
 	}
 
-	public static void add(DichVu dv)
+	public static  void add(DichVu dv)
 	{
 		Database DB = new Database();
 		DB.connect();
 		
-		String sql = "INSERT INTO DichVu (tendv, mota, gia) VALUES ('";
+		String sql = "INSERT INTO dichvu (madv,tendv, mota, gia) VALUES ('";
+                sql += dv.getMaDV()+"', '";
 		sql += dv.getTenDV()+"', '";
 		sql += dv.getMoTa()+"', '";
-		sql += dv.getGia()+"');";
-		
+		sql += dv.getGia()+"');";		
 		DB.update(sql);
 		DB.disconnect();
 	}
@@ -118,7 +120,7 @@ public class DichVuDAO
 	{
 		Database DB = new Database();
 		DB.connect();
-		DB.update("DELETE FROM DichVu WHERE DichVu.madv="+madv);
+		DB.update("DELETE FROM dichvu WHERE dichvu.madv="+madv);
 		DB.disconnect();
 	}
 
@@ -127,11 +129,11 @@ public class DichVuDAO
 		Database DB = new Database();
 		DB.connect();
 		
-		String sql = "UPDATE DichVu SET ";
+		String sql = "UPDATE dichvu SET ";
 		sql += "tendv='"					+dv.getTenDV();
 		sql += "', mota='"					+dv.getMoTa();
 		sql += "', gia='"					+dv.getGia();
-		sql += "' WHERE DichVu.madv = "		+dv.getMaDV()+";";
+		sql += "' WHERE dichvu.madv = "		+dv.getMaDV()+";";
 		
 		DB.update(sql);
 		DB.disconnect();
@@ -142,7 +144,7 @@ public class DichVuDAO
 		Database DB = new Database();
 		DB.connect();
 
-		ResultSet rs = DB.execution("SELECT gia FROM DichVu WHERE madv="+madv);
+		ResultSet rs = DB.execution("SELECT gia FROM dichvu WHERE madv="+madv);
 		
 		try
 		{
@@ -155,7 +157,7 @@ public class DichVuDAO
 		}
 		catch(SQLException e)
 		{
-			System.out.println("[DichVuDAO:getGia] error sql: "+e);
+			System.out.println("[dichvuDAO:getGia] error sql: "+e);
 		}
 		
 		DB.disconnect();

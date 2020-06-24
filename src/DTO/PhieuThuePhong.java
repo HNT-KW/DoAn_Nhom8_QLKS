@@ -56,5 +56,9 @@ public class PhieuThuePhong
 	{
 		m_ngaydi = ngaydi;
 	}
+
+    public void getNgayDi(String ngaydi) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 	
 }

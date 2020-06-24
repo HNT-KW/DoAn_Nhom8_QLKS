@@ -27,6 +27,7 @@ import Tools.DateUtil;
 import static java.awt.print.Printable.NO_SUCH_PAGE;
 import static java.awt.print.Printable.PAGE_EXISTS;
 import java.util.ArrayList;
+import java.util.Collection;
 
 /**
  *
@@ -49,9 +50,9 @@ public class BillPrintable implements Printable {
       ArrayList<ChiTietHoaDon> cthd=ChiTietHoaDonDAO.load(hd.getMaHD());
 	  ArrayList<PhieuDichVu> listpdv = new ArrayList<>();
 	  for (ChiTietHoaDon ct : cthd) {
-			if (PhieuDichVuDAO.get(ct.getMaCTHD()) != null) {
+			if (PhieuDichVuDAO.get(ct.getM_macthd()) != null) {
 
-				listpdv.addAll(PhieuDichVuDAO.get(ct.getMaCTHD()));
+				listpdv.addAll((Collection<? extends PhieuDichVu>) PhieuDichVuDAO.get(ct.getM_macthd()));
 			}				
 		}
                 
@@ -113,21 +114,21 @@ public class BillPrintable implements Printable {
             g2d.drawString("-------------------------------------",12,y);y+=yShift;
             g2d.drawString("      Hóa đơn khách hàng       ",12,y);y+=yShift;
             g2d.drawString("-------------------------------------",12,y);y+=headerRectHeight;
-			g2d.drawString(" Khách Hàng:"+KhachHangDAO.getKhachHang(hd.getMaKH()).getTen(),10,y);y+=yShift;
+			g2d.drawString(" Khách Hàng:  " +KhachHangDAO.getKhachHang(hd.getMaKH()).getTen(),10,y);y+=yShift;
             g2d.drawString("-------------------------------------",10,y);y+=yShift;
             g2d.drawString(" Phòng       số ngày          Giá   ",10,y);y+=yShift;
             g2d.drawString("-------------------------------------",10,y);y+=headerRectHeight;
             for(ChiTietHoaDon printcthd:cthd)
 			{
 				int songay=0;
-				if(DateUtil.getDay(DateUtil.getCurDate())==DateUtil.getDay(printcthd.getPhieuThuePhong().getNgayDen()))
+				if(DateUtil.getDay(DateUtil.getCurDate())==DateUtil.getDay(printcthd.getM_ptp().getNgayDen()))
 			{
 				songay=1;
 			}
 			else{
-			songay=DateUtil.getDay(DateUtil.getCurDate())-DateUtil.getDay(printcthd.getPhieuThuePhong().getNgayDen());
+			songay=DateUtil.getDay(DateUtil.getCurDate())-DateUtil.getDay(printcthd.getM_ptp().getNgayDen());
 			}
-				g2d.drawString(" "+printcthd.getPhieuThuePhong().getMaPHG()+"          "+songay+"           "+PhongBUS.getGiaLPhg(PhongBUS.getPhong(printcthd.getPhieuThuePhong().getMaPHG()).getMaloaiphg())+"  ",10,y);y+=yShift;
+				g2d.drawString(" "+printcthd.getM_ptp().getMaPHG()+"          "+songay+"           "+PhongBUS.getGiaLPhg(PhongBUS.getPhong(printcthd.getM_ptp().getMaPHG()).getMaloaiphg())+"  ",10,y);y+=yShift;
 			}
             g2d.drawString("-------------------------------------",10,y);y+=yShift;
             g2d.drawString(" Số phòng thuê: "+cthd.size()+"               ",10,y);y+=yShift;
@@ -136,10 +137,10 @@ public class BillPrintable implements Printable {
             g2d.drawString("-------------------------------------",10,y);y+=headerRectHeight;
 			for(PhieuDichVu pdv:listpdv)
 			{
-				g2d.drawString(" "+ChiTietHoaDonDAO.getcthdbypdv(pdv).getPhieuThuePhong().getMaPHG()+"       "+DichVuDAO.getDichVu(pdv.getMaDV()).getTenDV()+"      "+pdv.getSoLuong()+"      "+DichVuDAO.getDichVu(pdv.getMaDV()).getGia()+"  ",10,y);y+=yShift;
+				g2d.drawString(" "+ChiTietHoaDonDAO.getcthdbypdv(pdv).getM_ptp().getMaPHG()+"       "+DichVuDAO.getDichVu(pdv.getM_mapdv()).getTenDV()+"      "+pdv.getM_soluong()+"      "+DichVuDAO.getDichVu(pdv.getM_madv()).getGia()+"  ",10,y);y+=yShift;
 			}
 			g2d.drawString("-------------------------------------",10,y);y+=headerRectHeight;
-			g2d.drawString(" Số dịch vụ sử dụng: "+listpdv.size()+"               ",10,y);y+=yShift;
+			g2d.drawString(" Số dịch vụ sử dụng: "+listpdv.size()+"(chưa tính tiền dịch vụ vào hóa đơn)",10,y);y+=yShift;
 			g2d.drawString("-------------------------------------",10,y);y+=headerRectHeight;
 			g2d.drawString("         Tổng tiền:"+this.tongtien+"       ",12,y);y+=yShift;
 			

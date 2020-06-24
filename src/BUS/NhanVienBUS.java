@@ -34,12 +34,12 @@ public class NhanVienBUS
 		uploadTable(tbl, dsnv);
 	}
 
-	public ArrayList<NhanVien> find(String ho, String ten, int gioitinh, String chucvu, int luong)
+	public ArrayList<NhanVien> find(String ho, String ten)
 	{
 		NhanVienDAO nvDAO = new NhanVienDAO();
-		return nvDAO.find(ho, ten, gioitinh, chucvu, luong);
-	}
-	
+		return nvDAO.find(ho, ten);
+        }
+        /*
 	public NhanVien find_unique(int sdt, String email)
 	{
 		NhanVienDAO nvDAO = new NhanVienDAO();
@@ -51,7 +51,7 @@ public class NhanVienBUS
 		
 		return null;
 	}
-	
+	*/
 	public static void uploadTable(JTable tbl, ArrayList<NhanVien> list)
 	{
 		String[] columnNames = {"Mã","Họ","Tên","Giới tính","Ngày sinh","SĐT","Email","Ngày vào","Chức vụ","Lương"};
@@ -105,6 +105,16 @@ public class NhanVienBUS
 		nvDAO.add(nv);
 	}
 	
+        // Xóa
+	public static void delete(JTable tblnvData)
+	{
+		int manv = TableUtil.getMaFromTable(tblnvData);
+		if (manv != 1) {
+			NhanVienDAO nvDAO = new NhanVienDAO();
+                        nvDAO.delete(manv);
+		}
+	}
+        
 	public void edit(int manv, String ho, String ten, int gioitinh, String ngaysinh,
 			int sdt, String email, String ngayvao, String chucvu, int luong)
 	{
@@ -127,6 +137,7 @@ public class NhanVienBUS
 			JDateChooser formNS, JTextField formSDT, JTextField formEmail, JDateChooser formNV, JTextField formCV, JTextField formL)
 	{
 		NhanVien nv = NhanVienDAO.getNhanVien(TableUtil.getMaFromTable(tbl));
+                
 		formMa.setText(String.valueOf(nv.getMaNV()));
 		formHo.setText(nv.getHo());
 		formTen.setText(nv.getTen());

@@ -9,57 +9,53 @@ package DTO;
  *
  * @author Massan
  */
-public class PhieuDichVu
-{
-	private final int m_mapdv;
-	private final int m_madv;
-	private String m_ngaydat;
-	private int m_soluong;
-	private int m_machitiethoadon;
+public class PhieuDichVu {
 
-	public void setM_machitiethoadon(int m_machitiethoadon) {
-		this.m_machitiethoadon = m_machitiethoadon;
-	}
+    
+    private final int m_mapdv;
+    private  int m_madv;
+    private String m_ngaydat;
+    private int m_soluong;
 
-	public int getM_machitiethoadon() {
-		return m_machitiethoadon;
-	}
-	
-	
-	public PhieuDichVu(int mapdv, int madv)
-	{
-		m_mapdv = mapdv;
-		m_madv = madv;
-	}
-	
-	public int getMaPDV()
-	{
-		return m_mapdv;
-	}
-	
-	public int getMaDV()
-	{
-		return m_madv;
-	}
-	
-	public String getNgayDat()
-	{
-		return m_ngaydat;
-	}
+    public PhieuDichVu(int m_mapdv) {
+        this.m_mapdv = m_mapdv;
+    }
+    
+    
 
-	public void setNgayDat(String ngaydat)
-	{
-		m_ngaydat = ngaydat;
-	}
+    public PhieuDichVu(int m_mapdv, int m_madv, String m_ngaydat, int m_soluong) {
+        this.m_mapdv = m_mapdv;
+        this.m_madv = m_madv;
+        this.m_ngaydat = m_ngaydat;
+        this.m_soluong = m_soluong;
+    }
 
-	public int getSoLuong()
-	{
-		return m_soluong;
-	}
+    public  int getM_mapdv(){
+        return m_mapdv;
+    }
+    
+    public int getM_madv() {
+        return m_madv;
+    }
 
-	public void setSoLuong(int soluong)
-	{
-		m_soluong = soluong;
-	}
+    public void setM_madv(int m_madv) {
+        this.m_madv = m_madv;
+    }
+
+    public String getM_ngaydat() {
+        return m_ngaydat;
+    }
+
+    public void setM_ngaydat(String m_ngaydat) {
+        this.m_ngaydat = m_ngaydat;
+    }
+
+    public int getM_soluong() {
+        return m_soluong;
+    }
+
+    public void setM_soluong(int m_soluong) {
+        this.m_soluong = m_soluong;
+    }
 
 }

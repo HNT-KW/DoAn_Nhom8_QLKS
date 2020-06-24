@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import DTO.HoaDon;
 import GUI.ThongBao;
 import Tools.DateUtil;
+import UTILS.Database;
 
 /**
  *
@@ -27,7 +28,7 @@ public class HoaDonDAO
 		Database DB = new Database();
 		DB.connect();
 
-		ResultSet rs = DB.execution("SELECT * FROM HoaDon");
+		ResultSet rs = DB.execution("SELECT * FROM hoadon");
 
 		try {
 			while (rs.next()) {
@@ -77,7 +78,7 @@ public class HoaDonDAO
 		Database DB = new Database();
 		DB.connect();
 
-		String sql = "SELECT * FROM HoaDon WHERE mahd=" + mahd;
+		String sql = "SELECT * FROM hoadon WHERE mahd=" + mahd;
 		ResultSet rs = DB.execution(sql);
 
 		try {
@@ -101,7 +102,7 @@ public class HoaDonDAO
 		Database DB = new Database();
 		DB.connect();
 
-		String sql = "INSERT INTO HoaDon (makh, manv, ngaylap, tongtien) VALUES ('";
+		String sql = "INSERT INTO hoadon (makh, manv, ngaylap, tongtien) VALUES ('";
 		sql += hd.getMaKH() + "', '";
 		sql += hd.getMaNV() + "', '";
 		sql += hd.getNgayLap() + "', '";
@@ -113,7 +114,7 @@ public class HoaDonDAO
 	public static void delete(int mahd) {
 		Database DB = new Database();
 		DB.connect();
-		DB.update("DELETE FROM HoaDon WHERE HoaDon.mahd=" + mahd);
+		DB.update("DELETE FROM hoadon WHERE HoaDon.mahd=" + mahd);
 		DB.disconnect();
 	}
 
@@ -121,7 +122,7 @@ public class HoaDonDAO
 		Database DB = new Database();
 		DB.connect();
 
-		String sql = "UPDATE HoaDon SET ";
+		String sql = "UPDATE hoadon SET ";
 		sql += "ngaylap='" + hd.getNgayLap();
 		sql += "', tongtien='" + hd.getTongtien();
 		sql += "' WHERE HoaDon.mahd = " + hd.getMaHD() + ";";
@@ -134,7 +135,7 @@ public class HoaDonDAO
 		Database DB = new Database();
 		DB.connect();
 
-		ResultSet rs = DB.execution("SELECT MAX(mahd) FROM HoaDon");
+		ResultSet rs = DB.execution("SELECT MAX(mahd) FROM hoadon");
 
 		try {
 			while (rs.next()) {
@@ -155,7 +156,7 @@ public class HoaDonDAO
 		Database DB = new Database();
 		DB.connect();
 
-		ResultSet rs = DB.execution("SELECT * FROM HoaDon WHERE makh=" + makh);
+		ResultSet rs = DB.execution("SELECT * FROM hoadon WHERE makh=" + makh);
 
 		ArrayList<HoaDon> l_hoadon = new ArrayList<>();
 		try {
@@ -196,7 +197,7 @@ public class HoaDonDAO
 		DB.connect();
 
 		String sql = "SELECT hd.* ";
-		sql += "FROM HoaDon hd, ChiTietHoaDon cthd, PhieuThuePhong ptp ";
+		sql += "FROM hoadon hd, chitiethoadon cthd, phieuthuephong ptp ";
 		sql += "WHERE hd.mahd=cthd.mahd AND cthd.maptp=ptp.maptp AND ptp.maphg=" + maphg;
 
 		ResultSet rs = DB.execution(sql);
@@ -232,7 +233,7 @@ public class HoaDonDAO
 		return hd;
 	}
 
-	public static ArrayList<HoaDon> find(int makh, int manv, String ngaylap, int gia1, int gia2, int maphg, int madv)
+	public static ArrayList<HoaDon> find(int makh, int manv)
 	{
 		ArrayList<HoaDon> l_hoadon = new ArrayList<>();
 
@@ -250,19 +251,6 @@ public class HoaDonDAO
 			sql += " AND hd.makh="+makh;
 		if (manv != 0)
 			sql += " AND hd.manv="+manv;
-		if (!ngaylap.isEmpty())
-			sql += " AND hd.ngaylap="+ngaylap;
-		if (gia1 != 0)
-		{
-			if (gia2 == 0)
-				sql += " AND hd.tongtien="+gia1;
-			else
-				sql += " AND (hd.tongtien BETWEEN "+gia1+" AND "+gia2+")";
-		}
-		if (maphg != 0)
-			sql += " AND tp.maphg="+maphg;
-		if (madv != 0)
-			sql += " AND dv.maphg="+madv;
 		
 		ResultSet rs = DB.execution(sql);
 		

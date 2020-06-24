@@ -43,11 +43,12 @@ public class LeTanGUI extends javax.swing.JFrame {
         //Begin  tabquanlythuephong
         //code here
         //End Tabquanlythuephong
+        KhachHangBUS khBUS = new KhachHangBUS();
         try {
             DefaultTableCellRenderer renderer = new DefaultTableCellRenderer();// đối tượng thao tác với ô trong table
             renderer.setHorizontalAlignment(JLabel.LEFT);// Căn trai dữ liệu bảng
             tblkh.setRowHeight(20);
-            BUS.KhachHangBUS.HienThongkh(tblkh);
+            khBUS.updateTable(tblkh);
             tblkh.setDefaultRenderer(Object.class, renderer);
 
         } catch (Exception ex) {
@@ -55,16 +56,17 @@ public class LeTanGUI extends javax.swing.JFrame {
             System.out.println("Error in LeTanGUI: " + ex.getMessage());
         }
     }
-	public void updatetblphongdat()
-	{
-		PhongGUI.loadtblphongdangthue(tbldanhsachdadat,Integer.valueOf(txtmakhdp.getText()));
-	}
-	public void updatetblphong()
-	{
-		PhongGUI phgGUI = new PhongGUI();
+
+    public void updatetblphongdat() {
+        PhongGUI.loadtblphongdangthue(tbldanhsachdadat, Integer.valueOf(txtmakhdp.getText()));
+    }
+
+    public void updatetblphong() {
+        PhongGUI phgGUI = new PhongGUI();
         PhongBUS phgBUS = new PhongBUS();
         phgGUI.LoadTable(tblphong, phgBUS.load());
-	}
+    }
+
     public void enabledFrame() {
         this.setEnabled(true);
     }
@@ -180,7 +182,7 @@ public class LeTanGUI extends javax.swing.JFrame {
         bntdatdichvu = new javax.swing.JButton();
         btntraphong = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JSeparator();
-        jScrollPane6 = new javax.swing.JScrollPane();
+        jScrollPane7 = new javax.swing.JScrollPane();
         tbldanhsachdadat = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -188,7 +190,6 @@ public class LeTanGUI extends javax.swing.JFrame {
         setBackground(new java.awt.Color(255, 195, 191));
         setFocusable(false);
         setName("frmLeTan"); // NOI18N
-        setPreferredSize(new java.awt.Dimension(1340, 699));
         setResizable(false);
 
         jPanel3.setBackground(new java.awt.Color(255, 233, 226));
@@ -313,6 +314,7 @@ public class LeTanGUI extends javax.swing.JFrame {
 
         jButtonthemkh.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/adduser.png"))); // NOI18N
         jButtonthemkh.setText("thêm");
+        jButtonthemkh.setPreferredSize(new java.awt.Dimension(100, 35));
         jButtonthemkh.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonthemkhActionPerformed(evt);
@@ -320,6 +322,12 @@ public class LeTanGUI extends javax.swing.JFrame {
         });
 
         jLabel20.setText("SDT");
+
+        txtemail.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtemailActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -354,7 +362,7 @@ public class LeTanGUI extends javax.swing.JFrame {
                             .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jButtonthemkh)
+                        .addComponent(jButtonthemkh, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(27, 27, 27)))
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(txtsdt)
@@ -428,6 +436,7 @@ public class LeTanGUI extends javax.swing.JFrame {
 
         jButtonsuakh.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/edituser.png"))); // NOI18N
         jButtonsuakh.setText("sửa");
+        jButtonsuakh.setPreferredSize(new java.awt.Dimension(100, 35));
         jButtonsuakh.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonsuakhActionPerformed(evt);
@@ -489,7 +498,7 @@ public class LeTanGUI extends javax.swing.JFrame {
                 .addContainerGap(21, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButtonsuakh)
+                .addComponent(jButtonsuakh, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(185, 185, 185))
         );
         jPanel4Layout.setVerticalGroup(
@@ -926,11 +935,15 @@ public class LeTanGUI extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Mã phòng", "số người", "ngày đặt", "giá"
+
             }
         ));
-        jScrollPane6.setViewportView(tbldanhsachdadat);
-        tbldanhsachdadat.getAccessibleContext().setAccessibleDescription("Bảng phòng đã đặt");
+        tbldanhsachdadat.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tbldanhsachdadatMouseClicked(evt);
+            }
+        });
+        jScrollPane7.setViewportView(tbldanhsachdadat);
 
         javax.swing.GroupLayout tabdatphongLayout = new javax.swing.GroupLayout(tabdatphong);
         tabdatphong.setLayout(tabdatphongLayout);
@@ -951,14 +964,14 @@ public class LeTanGUI extends javax.swing.JFrame {
                                 .addComponent(btnphongdangthue)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(btnphongdangsua)))
-                        .addGap(0, 8, Short.MAX_VALUE)))
+                        .addGap(0, 17, Short.MAX_VALUE)))
                 .addGroup(tabdatphongLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(tabdatphongLayout.createSequentialGroup()
                         .addGap(18, 18, 18)
                         .addGroup(tabdatphongLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(tabdatphongLayout.createSequentialGroup()
-                                .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 515, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
+                                .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 541, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(tabdatphongLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(bntdatdichvu, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(btndoiphong, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -989,18 +1002,20 @@ public class LeTanGUI extends javax.swing.JFrame {
                     .addComponent(btnphongdangthue, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnphgtrong)
                     .addComponent(btntatcaphg))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(tabdatphongLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(tabdatphongLayout.createSequentialGroup()
-                        .addComponent(btndoiphong, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(bntdatdichvu, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(btntraphong, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(tabdatphongLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(jScrollPane6, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                        .addComponent(jScrollPane5, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 210, Short.MAX_VALUE)))
-                .addContainerGap(12, Short.MAX_VALUE))
+                        .addGroup(tabdatphongLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(tabdatphongLayout.createSequentialGroup()
+                                .addComponent(btndoiphong, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(bntdatdichvu, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(btntraphong, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 6, Short.MAX_VALUE))
+                    .addComponent(jScrollPane7, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         tabletan.addTab("quản lý phòng", tabdatphong);
@@ -1026,9 +1041,8 @@ public class LeTanGUI extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogoutActionPerformed
-		
-		
-		AutomaticallyClosedMsgBox(2000, "Đang đăng xuất.\nXin hãy đợi...");
+
+        AutomaticallyClosedMsgBox(2000, "Đang đăng xuất.\nXin hãy đợi...");
         this.dispose();
         DangNhapGUI dn = new DangNhapGUI("Quản lý khách sạn");
         dn.showWindow();
@@ -1050,14 +1064,14 @@ public class LeTanGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_tabdatphongMouseClicked
 
     private void btntraphongActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btntraphongActionPerformed
-       if (txtmakhdp.getText().length() == 0) {
+        if (txtmakhdp.getText().length() == 0) {
             ThongBao.noitice(" chưa chọn khách hàng nào.");
         } else if (HoaDonBUS.gethoadonbymakh(Integer.valueOf(txtmakhdp.getText())) == null) {
 
             ThongBao.noitice("chưa đặt phòng nào.");
         } else {
             this.setEnabled(false);
-            thanhtoan fr = new thanhtoan(this, true);
+            ThanhToanGUI fr = new ThanhToanGUI(this, true);
             fr.setVisible(true);
         }
     }//GEN-LAST:event_btntraphongActionPerformed
@@ -1065,19 +1079,17 @@ public class LeTanGUI extends javax.swing.JFrame {
     private void bntdatdichvuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bntdatdichvuActionPerformed
         if (txtmakhdp.getText().length() == 0) {
             ThongBao.noitice(" chưa chọn khách hàng nào.");
-        } else if (tbldanhsachdadat.getSelectedRow()==-1) {
+        } else if (tbldanhsachdadat.getSelectedRow() == -1) {
             ThongBao.noitice("chưa đặt phòng nào.");
         } else {
             this.setEnabled(false);
-            datdichvu fr = new datdichvu(this, true);
+            DatDichVuGUI fr = new DatDichVuGUI(this, true);
             fr.setVisible(true);
         }
     }//GEN-LAST:event_bntdatdichvuActionPerformed
 
     private void btndoiphongActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btndoiphongActionPerformed
-        BUS.PhongBUS.doiphong(tbldanhsachdadat,tblphong,Integer.valueOf(txtmakhdp.getText()));
-		updatetblphong();
-		updatetblphongdat();
+
     }//GEN-LAST:event_btndoiphongActionPerformed
 
     private void btnphongdangsuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnphongdangsuaActionPerformed
@@ -1093,7 +1105,7 @@ public class LeTanGUI extends javax.swing.JFrame {
         Phong phg = PhongBUS.getPhong(maphg);
         txtsophg.setText(String.valueOf(phg.getMaphg()));
         txtloaiphg.setText(tblphong.getValueAt(row, 1).toString());
-        txtgia.setText(tblphong.getValueAt(row, 3).toString());
+        txtgia.setText(tblphong.getValueAt(row, 4).toString());
         txtsophg.setEditable(false);
         txtloaiphg.setEditable(false);
         txtgia.setEditable(false);
@@ -1145,22 +1157,13 @@ public class LeTanGUI extends javax.swing.JFrame {
 
     private void btndatphongActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btndatphongActionPerformed
         BUS.PhongBUS.datphong(txtmakhdp, tblphong);
-		PhongGUI.loadtblphongdangthue(tbldanhsachdadat,Integer.valueOf(txtmakhdp.getText()) );
-		 PhongGUI phgGUI = new PhongGUI();
+        PhongGUI.loadtblphongdangthue(tbldanhsachdadat, Integer.valueOf(txtmakhdp.getText()));
+        PhongGUI phgGUI = new PhongGUI();
         PhongBUS phgBUS = new PhongBUS();
         phgGUI.LoadTable(tblphong, phgBUS.load());
     }//GEN-LAST:event_btndatphongActionPerformed
 
-//    public void setTextFieldsuakh() {
-//        txtmakh.setEditable(fa);
-//        txthokh.setEditable(false);
-//        txttenkh.setEditable(false);
-//        //txtngaysinh.setEditable(false);
-//        txtemail.setEditable(false);
-//        txtcmnn.setEditable(false);
-//        cmbgioitinh.setEnabled(false);
-//    }
-
+//  click vào đối tượng
     private void tblkhMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblkhMouseClicked
 
         int row = tblkh.getSelectedRow();
@@ -1220,10 +1223,11 @@ public class LeTanGUI extends javax.swing.JFrame {
             int cmnn = Integer.valueOf(txtcmnnm.getText());
             String qt = txtquoctichm.getText();
             BUS.KhachHangBUS.edit(makh, ho, ten, gt, ngaysinh, sdt, email, cmnn, qt);
+            KhachHangBUS khBUS = new KhachHangBUS();
             try {
                 AutomaticallyClosedMsgBox(1500, "Đang sửa.\nXin hãy đợi....");
                 JOptionPane.showMessageDialog(null, "sửa thành công.", "Information", JOptionPane.INFORMATION_MESSAGE);
-                BUS.KhachHangBUS.HienThongkh(tblkh);
+                khBUS.updateTable(tblkh);
 
             } catch (Exception ex) {
 
@@ -1267,10 +1271,11 @@ public class LeTanGUI extends javax.swing.JFrame {
             int cmnn = Integer.valueOf(txtcmnn.getText());
             String qt = txtquoctich.getText();
             BUS.KhachHangBUS.add(ho, ten, gt, ngaysinh, sdt, email, cmnn, qt);
+            KhachHangBUS khBUS = new KhachHangBUS();
             try {
                 AutomaticallyClosedMsgBox(1500, "Đang thêm.\nXin hãy đợi....");
                 JOptionPane.showMessageDialog(null, "Thêm thành công.", "Information", JOptionPane.INFORMATION_MESSAGE);
-                BUS.KhachHangBUS.HienThongkh(tblkh);
+                khBUS.updateTable(tblkh);
 
             } catch (Exception ex) {
 
@@ -1279,6 +1284,23 @@ public class LeTanGUI extends javax.swing.JFrame {
 
         }
     }//GEN-LAST:event_jButtonthemkhActionPerformed
+
+    private void txtemailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtemailActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtemailActionPerformed
+
+    private void tbldanhsachdadatMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbldanhsachdadatMouseClicked
+        // TODO add your handling code here:
+        int row = tblphong.getSelectedRow();
+        int maphg = Integer.valueOf(tblphong.getValueAt(row, 0).toString());
+        Phong phg = PhongBUS.getPhong(maphg);
+        txtsophg.setText(String.valueOf(phg.getMaphg()));
+        txtloaiphg.setText(tblphong.getValueAt(row, 1).toString());
+        txtgia.setText(tblphong.getValueAt(row, 4).toString());
+        txtsophg.setEditable(false);
+        txtloaiphg.setEditable(false);
+        txtgia.setEditable(false);
+    }//GEN-LAST:event_tbldanhsachdadatMouseClicked
     public void AutomaticallyClosedMsgBox(long time, String text) {
         JOptionPane jop = new JOptionPane();
         jop.setMessageType(JOptionPane.INFORMATION_MESSAGE);
@@ -1396,7 +1418,7 @@ public class LeTanGUI extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
-    private javax.swing.JScrollPane jScrollPane6;
+    private javax.swing.JScrollPane jScrollPane7;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JPanel tabdatphong;
     private javax.swing.JTabbedPane tabletan;

@@ -11,7 +11,7 @@ import java.util.ArrayList;
 
 import DTO.TaiKhoan;
 import GUI.ThongBao;
-
+import UTILS.Database;
 /**
  *
  * @author Massan
@@ -31,10 +31,10 @@ public class TaiKhoanDAO
 		{
 			while(rs.next())
 			{
-				TaiKhoan kh = new TaiKhoan(rs.getString(2));
-				kh.setMaNV(rs.getInt(1));
-				kh.setMatkhau(rs.getString(3));
-				kh.setQuyen( rs.getInt(4));
+				TaiKhoan kh = new TaiKhoan(rs.getString(3));
+				kh.setMaNV(rs.getInt(2));
+				kh.setMatkhau(rs.getString(4));
+				kh.setQuyen( rs.getInt(5));
 				l_TaiKhoan.add(kh);
 			}
 		}
@@ -59,11 +59,10 @@ public class TaiKhoanDAO
 		{
 			while(rs.next())
 			{
-				TaiKhoan tk = new TaiKhoan(rs.getString(2));
-
-				tk.setMaNV(rs.getInt(1));
-				tk.setMatkhau(rs.getString(3));
-				tk.setQuyen(rs.getInt(4));
+				TaiKhoan tk = new TaiKhoan(rs.getString(3));
+				tk.setMaNV(rs.getInt("manv"));
+				tk.setMatkhau(rs.getString("matkhau"));
+				tk.setQuyen(rs.getInt("quyen"));
 				
 				DB.disconnect();
 				
@@ -85,20 +84,21 @@ public class TaiKhoanDAO
 		Database DB = new Database();
 		DB.connect();
 		
-		String sql = "INSERT INTO taokhoan (matkhau, manv, quyen) VALUES ('";
+		String sql = "INSERT INTO taikhoan (manv, tentk , matkhau, quyen) VALUES ('";
+                sql += tk.getMaNV()+"', '";
+                sql +=tk.getTenTK()+"', '";
 		sql += tk.getMatkhau()+"', '";
-		sql += tk.getMaNV()+"', '";
 		sql += tk.getQuyen()+"');";
 		
 		DB.update(sql);
 		DB.disconnect();
 	}
 
-	public void delete(String tentk)
+	public void delete(int matk)
 	{
 		Database DB = new Database();
 		DB.connect();
-		DB.update("DELETE FROM TaiKhoan WHERE TaiKhoan.tentk="+tentk);
+		DB.update("DELETE FROM taikhoan WHERE matk="+matk);
 		DB.disconnect();
 	}
 
@@ -108,8 +108,9 @@ public class TaiKhoanDAO
 		DB.connect();
 		
 		String sql = "UPDATE TaiKhoan SET ";
-		sql += "matkhau='"					+tk.getMatkhau();
-		sql += "', manv='"					+tk.getMaNV();
+                sql += "manv='"					+tk.getMaNV();
+                sql += "tentk='"                                +tk.getTenTK();
+		sql += "', matkhau='"					+tk.getMatkhau();
 		sql += "', quyen='"					+tk.getQuyen();
 		sql += "' WHERE TaiKhoan.tentk = "		+tk.getTenTK()+";";
 		
@@ -145,11 +146,11 @@ public class TaiKhoanDAO
 		{
 			while(rs.next())
 			{
-				TaiKhoan tk = new TaiKhoan(rs.getString(2));
+				TaiKhoan tk = new TaiKhoan(rs.getString(3));
 				
-				tk.setMaNV(rs.getInt(1));
-				tk.setMatkhau(rs.getString(3));
-				tk.setQuyen(rs.getInt(4));
+				tk.setMaNV(rs.getInt(2));
+				tk.setMatkhau(rs.getString(4));
+				tk.setQuyen(rs.getInt(5));
 				
 				l_taikhoan.add(tk);
 			}

@@ -11,7 +11,7 @@ import java.util.ArrayList;
 
 import DTO.NhanVien;
 import GUI.ThongBao;
-
+import UTILS.Database;
 /**
  *
  * @author Massan
@@ -38,10 +38,10 @@ public class NhanVienDAO
 				nv.setGioiTinh(rs.getByte(4));
 				nv.setNgaySinh(rs.getString(5));
 				nv.setSDT(rs.getInt(6));
-				nv.setEmail(rs.getString(3));
-				nv.setNgayVao(rs.getString(5));
-				nv.setChucVu(rs.getString(3));
-				nv.setLuong(rs.getInt(6));
+				nv.setEmail(rs.getString(7));
+				nv.setNgayVao(rs.getString(8));
+				nv.setChucVu(rs.getString(9));
+				nv.setLuong(rs.getInt(10));
 				l_nhanvien.add(nv);
 			}
 		}
@@ -97,7 +97,6 @@ public class NhanVienDAO
 	{
 		Database DB = new Database();
 		DB.connect();
-		
 		String sql = "INSERT INTO nhanvien (ho, ten, gioitinh, ngaysinh, sdt, email, ngayvao, chucvu, luong) VALUES ('";
 		sql += nv.getHo()+"', '";
 		sql += nv.getTen()+"', '";
@@ -168,9 +167,9 @@ public class NhanVienDAO
 		return -1;
 	}
 	
-	public ArrayList<NhanVien> find(String ho, String ten, int gioitinh, String chucvu, int luong)
+	public ArrayList<NhanVien> find(String ho, String ten)
 	{
-		ArrayList<NhanVien> l_khachhang = new ArrayList<>();
+		ArrayList<NhanVien> l_nhanvien = new ArrayList<>();
 		
 		Database DB = new Database();
 		DB.connect();
@@ -178,15 +177,10 @@ public class NhanVienDAO
 		String sql = "SELECT * FROM nhanvien WHERE ";
 		
 		if(!ho.isEmpty())
-			sql += "ho='" + ho + "' AND";
+			sql += "ho='" + ho + "' AND ";
 		if(!ten.isEmpty())
-			sql += "ten='" + ten + "' AND";
-		if(gioitinh >= 0)
-			sql += "gioitinh='" + gioitinh + "' AND";
-		if(chucvu.length() == 10)
-			sql += "chucvu='" + chucvu + "' AND";
-		if(luong != 0)
-			sql += "luong='" + luong + "' AND";
+			sql += "ten='" + ten + "' AND ";
+		
 		
 		sql = sql.substring(0, sql.length() - 4);
 		
@@ -207,7 +201,7 @@ public class NhanVienDAO
 				nv.setNgayVao(rs.getString(8));
 				nv.setChucVu(rs.getString(9));
 				nv.setLuong(rs.getInt(10));
-				l_khachhang.add(nv);
+				l_nhanvien.add(nv);
 			}
 		}
 		catch(SQLException e)
@@ -217,9 +211,9 @@ public class NhanVienDAO
 		
 		DB.disconnect();
 		
-		return l_khachhang;
+		return l_nhanvien;
 	}
-
+/*
 	public NhanVien find_sdt(int sdt)
 	{
 		Database DB = new Database();
@@ -295,4 +289,5 @@ public class NhanVienDAO
 		
 		return null;
 	}
+*/
 }

@@ -11,7 +11,7 @@ import java.util.ArrayList;
 
 import DTO.Phong;
 import GUI.ThongBao;
-
+import UTILS.Database;
 /**
  *
  * @author Massan
@@ -98,6 +98,13 @@ public class PhongDAO
 		Database DB = new Database();
 		DB.connect();
 		DB.update("DELETE FROM phong WHERE maphg="+maphg);
+		DB.disconnect();
+	}
+        public static void deleteloaiphong(int malphg)
+	{
+		Database DB = new Database();
+		DB.connect();
+		DB.update("DELETE FROM loaiphong WHERE maloaiphg="+malphg);
 		DB.disconnect();
 	}
 

@@ -54,8 +54,8 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Component id="tabquanly" alignment="0" pref="1189" max="32767" attributes="0"/>
-              <Component id="pnlTitle" alignment="0" pref="1187" max="32767" attributes="0"/>
+              <Component id="tabquanly" alignment="0" pref="1267" max="32767" attributes="0"/>
+              <Component id="pnlTitle" alignment="0" pref="1267" max="32767" attributes="0"/>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
@@ -63,7 +63,7 @@
               <Group type="102" alignment="0" attributes="0">
                   <Component id="pnlTitle" min="-2" pref="94" max="-2" attributes="0"/>
                   <EmptySpace min="-2" max="-2" attributes="0"/>
-                  <Component id="tabquanly" pref="599" max="32767" attributes="0"/>
+                  <Component id="tabquanly" pref="641" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -211,14 +211,17 @@
                           <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
                           <Component id="pnlkhForm" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="btnkhThem" max="32767" attributes="0"/>
-                              <Component id="btnkhSua" max="32767" attributes="0"/>
-                              <Component id="btnkhTim" alignment="0" max="32767" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="btnkhThem" max="32767" attributes="0"/>
+                                  <Component id="btnkhSua" max="32767" attributes="0"/>
+                                  <Component id="btnkhTim" alignment="0" max="32767" attributes="0"/>
+                              </Group>
+                              <Component id="btnkhXoa" min="-2" max="-2" attributes="0"/>
+                              <Component id="btnkhRef" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="srlkhData" pref="661" max="32767" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Component id="srlkhData" pref="754" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -226,18 +229,30 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <Component id="lblkhTitle" min="-2" pref="38" max="-2" attributes="0"/>
-                          <EmptySpace max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace min="-2" pref="119" max="-2" attributes="0"/>
-                                  <Component id="btnkhTim" min="-2" pref="32" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
-                                  <Component id="btnkhThem" min="-2" pref="32" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
-                                  <Component id="btnkhSua" min="-2" pref="32" max="-2" attributes="0"/>
+                              <Group type="102" attributes="0">
+                                  <EmptySpace max="32767" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="pnlkhForm" alignment="0" pref="528" max="32767" attributes="0"/>
+                                      <Group type="102" attributes="0">
+                                          <EmptySpace min="-2" pref="119" max="-2" attributes="0"/>
+                                          <Component id="btnkhTim" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
+                                          <Component id="btnkhThem" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
+                                          <Component id="btnkhSua" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
+                                          <Component id="btnkhXoa" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
+                                          <Component id="btnkhRef" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace min="0" pref="101" max="32767" attributes="0"/>
+                                      </Group>
+                                  </Group>
                               </Group>
-                              <Component id="srlkhData" min="-2" pref="447" max="-2" attributes="0"/>
-                              <Component id="pnlkhForm" alignment="0" max="32767" attributes="0"/>
+                              <Group type="102" attributes="0">
+                                  <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
+                                  <Component id="srlkhData" max="32767" attributes="0"/>
+                              </Group>
                           </Group>
                           <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
                       </Group>
@@ -268,6 +283,9 @@
                           <Color PropertyName="color" blue="ff" green="33" red="0" type="rgb"/>
                         </LineBorder>
                       </Border>
+                    </Property>
+                    <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                      <Dimension value="[340, 530]"/>
                     </Property>
                   </Properties>
 
@@ -311,7 +329,7 @@
                                       </Group>
                                   </Group>
                               </Group>
-                              <EmptySpace pref="53" max="32767" attributes="0"/>
+                              <EmptySpace pref="47" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -363,7 +381,7 @@
                                   <Component id="lblkhFormQuocTich" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="txtkhFormQuocTich" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace pref="138" max="32767" attributes="0"/>
+                              <EmptySpace pref="179" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -488,6 +506,9 @@
                       <Image iconType="3" name="/Images/adduser.png"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="th&#xea;m"/>
+                    <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                      <Dimension value="[100, 35]"/>
+                    </Property>
                   </Properties>
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnkhThemActionPerformed"/>
@@ -499,6 +520,9 @@
                       <Image iconType="3" name="/Images/edituser.png"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="s&#x1eed;a"/>
+                    <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                      <Dimension value="[100, 35]"/>
+                    </Property>
                   </Properties>
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnkhSuaActionPerformed"/>
@@ -510,9 +534,40 @@
                       <Image iconType="3" name="/Images/find.png"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="T&#xec;m"/>
+                    <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                      <Dimension value="[100, 35]"/>
+                    </Property>
                   </Properties>
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnkhTimActionPerformed"/>
+                  </Events>
+                </Component>
+                <Component class="javax.swing.JButton" name="btnkhXoa">
+                  <Properties>
+                    <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                      <Image iconType="3" name="/Images/removeuser.png"/>
+                    </Property>
+                    <Property name="text" type="java.lang.String" value="x&#xf3;a"/>
+                    <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                      <Dimension value="[100, 35]"/>
+                    </Property>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnkhXoaActionPerformed"/>
+                  </Events>
+                </Component>
+                <Component class="javax.swing.JButton" name="btnkhRef">
+                  <Properties>
+                    <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                      <Image iconType="3" name="/Images/refresh.png"/>
+                    </Property>
+                    <Property name="text" type="java.lang.String" value="Refresh"/>
+                    <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                      <Dimension value="[100, 35]"/>
+                    </Property>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnkhRefActionPerformed"/>
                   </Events>
                 </Component>
               </SubComponents>
@@ -539,13 +594,20 @@
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="pnlnvForm" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="btnnvThem" max="32767" attributes="0"/>
-                              <Component id="btnnvSua" alignment="0" max="32767" attributes="0"/>
-                              <Component id="btnnvTim" alignment="0" max="32767" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="103" groupAlignment="1" attributes="0">
+                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                      <Component id="btnnvThem" max="32767" attributes="0"/>
+                                      <Component id="btnnvSua" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="btnnvTim" alignment="0" max="32767" attributes="0"/>
+                                  </Group>
+                                  <Component id="btnnvXoa" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <Component id="btnnvRef" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="srlnvData" pref="725" max="32767" attributes="0"/>
+                          <Component id="srlnvData" pref="790" max="32767" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -554,22 +616,26 @@
                       <Group type="102" alignment="0" attributes="0">
                           <Component id="lblnvTitle" min="-2" pref="38" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" attributes="0">
-                                  <EmptySpace min="-2" pref="142" max="-2" attributes="0"/>
-                                  <Component id="btnnvTim" min="-2" pref="32" max="-2" attributes="0"/>
-                                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="btnnvThem" min="-2" pref="32" max="-2" attributes="0"/>
-                                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="btnnvSua" min="-2" pref="32" max="-2" attributes="0"/>
-                                  <EmptySpace max="32767" attributes="0"/>
-                              </Group>
-                              <Group type="102" alignment="1" attributes="0">
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="srlnvData" pref="527" max="32767" attributes="0"/>
-                              </Group>
                               <Group type="102" alignment="0" attributes="0">
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="pnlnvForm" max="32767" attributes="0"/>
+                                  <Component id="pnlnvForm" pref="552" max="32767" attributes="0"/>
+                              </Group>
+                              <Group type="102" attributes="0">
+                                  <EmptySpace min="-2" pref="142" max="-2" attributes="0"/>
+                                  <Component id="btnnvTim" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Component id="btnnvThem" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Component id="btnnvSua" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Component id="btnnvXoa" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
+                                  <Component id="btnnvRef" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="32767" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Component id="srlnvData" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
@@ -600,6 +666,9 @@
                           <Color PropertyName="color" blue="ff" green="33" red="0" type="rgb"/>
                         </LineBorder>
                       </Border>
+                    </Property>
+                    <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                      <Dimension value="[340, 530]"/>
                     </Property>
                   </Properties>
 
@@ -657,7 +726,7 @@
                                       </Group>
                                   </Group>
                               </Group>
-                              <EmptySpace pref="53" max="32767" attributes="0"/>
+                              <EmptySpace pref="45" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -714,7 +783,7 @@
                                   <Component id="lblnvFormLuong" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="txtnvFormLuong" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace max="32767" attributes="0"/>
+                              <EmptySpace pref="166" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -846,6 +915,9 @@
                       <Image iconType="3" name="/Images/adduser.png"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="th&#xea;m"/>
+                    <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                      <Dimension value="[100, 35]"/>
+                    </Property>
                   </Properties>
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnnvThemActionPerformed"/>
@@ -857,6 +929,9 @@
                       <Image iconType="3" name="/Images/edituser.png"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="s&#x1eed;a"/>
+                    <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                      <Dimension value="[100, 35]"/>
+                    </Property>
                   </Properties>
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnnvSuaActionPerformed"/>
@@ -868,9 +943,40 @@
                       <Image iconType="3" name="/Images/find.png"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="T&#xec;m"/>
+                    <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                      <Dimension value="[100, 35]"/>
+                    </Property>
                   </Properties>
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnnvTimActionPerformed"/>
+                  </Events>
+                </Component>
+                <Component class="javax.swing.JButton" name="btnnvXoa">
+                  <Properties>
+                    <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                      <Image iconType="3" name="/Images/removeuser.png"/>
+                    </Property>
+                    <Property name="text" type="java.lang.String" value="x&#xf3;a"/>
+                    <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                      <Dimension value="[100, 35]"/>
+                    </Property>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnnvXoaActionPerformed"/>
+                  </Events>
+                </Component>
+                <Component class="javax.swing.JButton" name="btnnvRef">
+                  <Properties>
+                    <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                      <Image iconType="3" name="/Images/refresh.png"/>
+                    </Property>
+                    <Property name="text" type="java.lang.String" value="Refresh"/>
+                    <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                      <Dimension value="[100, 35]"/>
+                    </Property>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnnvRefActionPerformed"/>
                   </Events>
                 </Component>
               </SubComponents>
@@ -892,42 +998,53 @@
               <Layout>
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="lbltkTitle" alignment="0" max="32767" attributes="0"/>
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="pnltkForm" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="btntkTim" alignment="0" min="-2" pref="91" max="-2" attributes="0"/>
-                              <Component id="btntkThem" max="32767" attributes="0"/>
-                              <Component id="btntkSua" alignment="0" max="32767" attributes="0"/>
+                      <Group type="102" attributes="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="pnltkForm" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                      <Component id="btntkTim" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="btntkThem" max="32767" attributes="0"/>
+                                      <Component id="btntkSua" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="btntkRef" max="32767" attributes="0"/>
+                                      <Component id="btntkXoa" alignment="0" max="32767" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="srltkData" pref="790" max="32767" attributes="0"/>
+                              </Group>
+                              <Component id="lbltkTitle" alignment="0" max="32767" attributes="0"/>
                           </Group>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="srltkData" pref="715" max="32767" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
                 <DimensionLayout dim="1">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
+                      <Group type="102" attributes="0">
                           <Component id="lbltkTitle" min="-2" pref="38" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="1" attributes="0">
-                              <Group type="102" alignment="1" attributes="0">
-                                  <EmptySpace min="-2" pref="103" max="-2" attributes="0"/>
-                                  <Component id="btntkTim" min="-2" pref="32" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace min="-2" pref="79" max="-2" attributes="0"/>
+                                  <Component id="btntkTim" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="btntkThem" min="-2" pref="32" max="-2" attributes="0"/>
+                                  <Component id="btntkThem" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="btntkSua" min="-2" pref="32" max="-2" attributes="0"/>
+                                  <Component id="btntkSua" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Component id="btntkXoa" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
+                                  <Component id="btntkRef" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="32767" attributes="0"/>
                               </Group>
-                              <Group type="102" alignment="1" attributes="0">
+                              <Group type="102" attributes="0">
+                                  <Component id="srltkData" pref="558" max="32767" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="1" attributes="0">
-                                      <Component id="srltkData" pref="507" max="32767" attributes="0"/>
-                                      <Component id="pnltkForm" max="32767" attributes="0"/>
-                                  </Group>
+                              </Group>
+                              <Group type="102" attributes="0">
+                                  <Component id="pnltkForm" pref="532" max="32767" attributes="0"/>
                                   <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
                               </Group>
                           </Group>
@@ -959,6 +1076,9 @@
                           <Color PropertyName="color" blue="ff" green="33" red="0" type="rgb"/>
                         </LineBorder>
                       </Border>
+                    </Property>
+                    <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                      <Dimension value="[340, 530]"/>
                     </Property>
                   </Properties>
 
@@ -1018,7 +1138,7 @@
                                               <Component id="txttkFormChucVu" min="-2" pref="155" max="-2" attributes="0"/>
                                           </Group>
                                       </Group>
-                                      <EmptySpace min="0" pref="43" max="32767" attributes="0"/>
+                                      <EmptySpace min="0" pref="37" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
@@ -1077,7 +1197,7 @@
                                   <Component id="lbltkFormChucVu" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="txttkFormChucVu" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace max="32767" attributes="0"/>
+                              <EmptySpace pref="116" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -1204,6 +1324,9 @@
                       <Image iconType="3" name="/Images/adduser.png"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="th&#xea;m"/>
+                    <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                      <Dimension value="[100, 35]"/>
+                    </Property>
                   </Properties>
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btntkThemActionPerformed"/>
@@ -1215,6 +1338,9 @@
                       <Image iconType="3" name="/Images/edituser.png"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="s&#x1eed;a"/>
+                    <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                      <Dimension value="[100, 35]"/>
+                    </Property>
                   </Properties>
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btntkSuaActionPerformed"/>
@@ -1226,9 +1352,40 @@
                       <Image iconType="3" name="/Images/find.png"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="T&#xec;m"/>
+                    <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                      <Dimension value="[100, 35]"/>
+                    </Property>
                   </Properties>
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btntkTimActionPerformed"/>
+                  </Events>
+                </Component>
+                <Component class="javax.swing.JButton" name="btntkRef">
+                  <Properties>
+                    <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                      <Image iconType="3" name="/Images/refresh.png"/>
+                    </Property>
+                    <Property name="text" type="java.lang.String" value="Refresh"/>
+                    <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                      <Dimension value="[100, 35]"/>
+                    </Property>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btntkRefActionPerformed"/>
+                  </Events>
+                </Component>
+                <Component class="javax.swing.JButton" name="btntkXoa">
+                  <Properties>
+                    <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                      <Image iconType="3" name="/Images/removeuser.png"/>
+                    </Property>
+                    <Property name="text" type="java.lang.String" value="x&#xf3;a"/>
+                    <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                      <Dimension value="[100, 35]"/>
+                    </Property>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btntkXoaActionPerformed"/>
                   </Events>
                 </Component>
               </SubComponents>
@@ -1261,7 +1418,7 @@
                                           <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
                                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                               <Component id="btnpTheml" max="32767" attributes="0"/>
-                                              <Component id="btnpXoal" alignment="0" min="-2" pref="91" max="-2" attributes="0"/>
+                                              <Component id="btnpXoal" alignment="0" min="-2" max="-2" attributes="0"/>
                                               <Component id="btnpSual" alignment="0" max="32767" attributes="0"/>
                                           </Group>
                                       </Group>
@@ -1272,8 +1429,8 @@
                                       <Group type="102" alignment="1" attributes="0">
                                           <EmptySpace max="-2" attributes="0"/>
                                           <Group type="103" groupAlignment="0" attributes="0">
-                                              <Component id="btnpSua" alignment="1" min="-2" pref="93" max="-2" attributes="0"/>
-                                              <Component id="btnpXoa" alignment="1" min="-2" pref="93" max="-2" attributes="0"/>
+                                              <Component id="btnpSua" alignment="1" min="-2" max="-2" attributes="0"/>
+                                              <Component id="btnpXoa" alignment="1" min="-2" max="-2" attributes="0"/>
                                           </Group>
                                       </Group>
                                   </Group>
@@ -1289,7 +1446,7 @@
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="srlpData" pref="649" max="32767" attributes="0"/>
+                              <Component id="srlpData" pref="756" max="32767" attributes="0"/>
                               <Component id="srlpDatal" max="32767" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
@@ -1311,14 +1468,14 @@
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Group type="102" attributes="0">
-                                          <Component id="btnpThem" min="-2" pref="32" max="-2" attributes="0"/>
+                                          <Component id="btnpThem" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace type="separate" max="-2" attributes="0"/>
-                                          <Component id="btnpSua" min="-2" pref="32" max="-2" attributes="0"/>
+                                          <Component id="btnpSua" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace type="separate" max="-2" attributes="0"/>
-                                          <Component id="btnpXoa" min="-2" pref="32" max="-2" attributes="0"/>
+                                          <Component id="btnpXoa" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                                       </Group>
-                                      <Component id="pnlpForm" max="32767" attributes="0"/>
+                                      <Component id="pnlpForm" pref="499" max="32767" attributes="0"/>
                                   </Group>
                                   <EmptySpace max="-2" attributes="0"/>
                               </Group>
@@ -1327,12 +1484,12 @@
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Group type="102" attributes="0">
-                                          <Component id="btnpTheml" min="-2" pref="32" max="-2" attributes="0"/>
+                                          <Component id="btnpTheml" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace type="separate" max="-2" attributes="0"/>
-                                          <Component id="btnpSual" min="-2" pref="32" max="-2" attributes="0"/>
+                                          <Component id="btnpSual" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace type="separate" max="-2" attributes="0"/>
-                                          <Component id="btnpXoal" min="-2" pref="32" max="-2" attributes="0"/>
-                                          <EmptySpace min="0" pref="85" max="32767" attributes="0"/>
+                                          <Component id="btnpXoal" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace min="0" pref="114" max="32767" attributes="0"/>
                                       </Group>
                                       <Component id="srlpDatal" pref="0" max="32767" attributes="0"/>
                                   </Group>
@@ -1366,6 +1523,9 @@
                           <Color PropertyName="color" blue="ff" green="33" red="0" type="rgb"/>
                         </LineBorder>
                       </Border>
+                    </Property>
+                    <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                      <Dimension value="[340, 530]"/>
                     </Property>
                   </Properties>
 
@@ -1403,7 +1563,7 @@
                                                       </Group>
                                                   </Group>
                                               </Group>
-                                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                              <EmptySpace min="0" pref="37" max="32767" attributes="0"/>
                                           </Group>
                                           <Component id="lblpFormTitleLP" alignment="1" max="32767" attributes="0"/>
                                           <Component id="sprpFormChia" alignment="0" max="32767" attributes="0"/>
@@ -1420,7 +1580,7 @@
                                               <Component id="srlpFormMoTa" min="-2" pref="305" max="-2" attributes="0"/>
                                           </Group>
                                       </Group>
-                                      <EmptySpace min="0" pref="39" max="32767" attributes="0"/>
+                                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
@@ -1581,6 +1741,9 @@
                       <Image iconType="3" name="/Images/adduser.png"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="th&#xea;m"/>
+                    <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                      <Dimension value="[100, 35]"/>
+                    </Property>
                   </Properties>
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnpThemActionPerformed"/>
@@ -1592,6 +1755,9 @@
                       <Image iconType="3" name="/Images/edituser.png"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="s&#x1eed;a"/>
+                    <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                      <Dimension value="[100, 35]"/>
+                    </Property>
                   </Properties>
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnpSuaActionPerformed"/>
@@ -1611,6 +1777,9 @@
                       <Image iconType="3" name="/Images/removeuser.png"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="x&#xf3;a"/>
+                    <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                      <Dimension value="[100, 35]"/>
+                    </Property>
                   </Properties>
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnpXoaActionPerformed"/>
@@ -1646,6 +1815,9 @@
                       <Image iconType="3" name="/Images/adduser.png"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="th&#xea;m"/>
+                    <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                      <Dimension value="[100, 35]"/>
+                    </Property>
                   </Properties>
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnpThemlActionPerformed"/>
@@ -1657,6 +1829,9 @@
                       <Image iconType="3" name="/Images/edituser.png"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="s&#x1eed;a"/>
+                    <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                      <Dimension value="[100, 35]"/>
+                    </Property>
                   </Properties>
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnpSualActionPerformed"/>
@@ -1668,6 +1843,9 @@
                       <Image iconType="3" name="/Images/removeuser.png"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="x&#xf3;a"/>
+                    <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                      <Dimension value="[100, 35]"/>
+                    </Property>
                   </Properties>
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnpXoalActionPerformed"/>
@@ -1697,13 +1875,16 @@
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="pnldvForm" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="btndvThem" alignment="0" pref="100" max="32767" attributes="0"/>
-                              <Component id="btndvSua" alignment="0" max="32767" attributes="0"/>
-                              <Component id="btndvXoa" alignment="0" max="32767" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="btndvThem" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="btndvSua" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="btndvXoa" alignment="0" max="32767" attributes="0"/>
+                              </Group>
+                              <Component id="btndvRef" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="srldvData" pref="706" max="32767" attributes="0"/>
+                          <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
+                          <Component id="srldvData" pref="757" max="32767" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
                   </Group>
@@ -1712,21 +1893,23 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <Component id="lbldvTitle" min="-2" pref="38" max="-2" attributes="0"/>
-                          <EmptySpace max="32767" attributes="0"/>
+                          <EmptySpace pref="34" max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" attributes="0">
-                                  <EmptySpace min="-2" pref="193" max="-2" attributes="0"/>
-                                  <Component id="btndvThem" min="-2" pref="32" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="103" max="-2" attributes="0"/>
+                                  <Component id="btndvThem" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
-                                  <Component id="btndvSua" min="-2" pref="32" max="-2" attributes="0"/>
+                                  <Component id="btndvSua" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
-                                  <Component id="btndvXoa" min="-2" pref="32" max="-2" attributes="0"/>
+                                  <Component id="btndvXoa" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
+                                  <Component id="btndvRef" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
-                                  <Group type="103" groupAlignment="1" attributes="0">
-                                      <Component id="srldvData" min="-2" pref="448" max="-2" attributes="0"/>
-                                      <Component id="pnldvForm" min="-2" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                      <Component id="pnldvForm" max="32767" attributes="0"/>
+                                      <Component id="srldvData" max="32767" attributes="0"/>
                                   </Group>
                                   <EmptySpace max="-2" attributes="0"/>
                               </Group>
@@ -1759,6 +1942,9 @@
                           <Color PropertyName="color" blue="ff" green="33" red="0" type="rgb"/>
                         </LineBorder>
                       </Border>
+                    </Property>
+                    <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                      <Dimension value="[340, 530]"/>
                     </Property>
                   </Properties>
 
@@ -1798,7 +1984,7 @@
                                       <Component id="srldvMoTa" min="-2" pref="290" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
-                              <EmptySpace pref="26" max="32767" attributes="0"/>
+                              <EmptySpace pref="20" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -1824,7 +2010,7 @@
                               <Component id="lbldvFormMoTa" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="srldvMoTa" min="-2" pref="202" max="-2" attributes="0"/>
-                              <EmptySpace pref="75" max="32767" attributes="0"/>
+                              <EmptySpace pref="153" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -1915,6 +2101,9 @@
                       <Image iconType="3" name="/Images/adduser.png"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="th&#xea;m"/>
+                    <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                      <Dimension value="[100, 35]"/>
+                    </Property>
                   </Properties>
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btndvThemActionPerformed"/>
@@ -1926,6 +2115,9 @@
                       <Image iconType="3" name="/Images/edituser.png"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="s&#x1eed;a"/>
+                    <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                      <Dimension value="[100, 35]"/>
+                    </Property>
                   </Properties>
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btndvSuaActionPerformed"/>
@@ -1937,9 +2129,26 @@
                       <Image iconType="3" name="/Images/removeuser.png"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="X&#xf3;a"/>
+                    <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                      <Dimension value="[100, 35]"/>
+                    </Property>
                   </Properties>
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btndvXoaActionPerformed"/>
+                  </Events>
+                </Component>
+                <Component class="javax.swing.JButton" name="btndvRef">
+                  <Properties>
+                    <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                      <Image iconType="3" name="/Images/refresh.png"/>
+                    </Property>
+                    <Property name="text" type="java.lang.String" value="Refresh"/>
+                    <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                      <Dimension value="[100, 35]"/>
+                    </Property>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btndvRefActionPerformed"/>
                   </Events>
                 </Component>
               </SubComponents>
@@ -1971,11 +2180,11 @@
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" attributes="0">
-                                  <Component id="srlhdData2" min="-2" pref="456" max="-2" attributes="0"/>
-                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                  <Component id="srlhdData1" pref="367" max="32767" attributes="0"/>
+                                  <Component id="jScrollPane2" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="32767" attributes="0"/>
+                                  <Component id="jScrollPane3" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <Component id="srlhdData" max="32767" attributes="0"/>
+                              <Component id="jScrollPane1" max="32767" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
@@ -1985,19 +2194,19 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <Component id="lblhdTitle" min="-2" pref="38" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="1" attributes="0">
-                              <Component id="pnlhdForm" alignment="1" max="32767" attributes="0"/>
-                              <Group type="102" alignment="1" attributes="0">
-                                  <Component id="srlhdData" min="-2" pref="224" max="-2" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Group type="102" attributes="0">
+                                  <Component id="jScrollPane1" min="-2" pref="213" max="-2" attributes="0"/>
                                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="srlhdData1" pref="0" max="32767" attributes="0"/>
-                                      <Component id="srlhdData2" pref="0" max="32767" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                      <Component id="jScrollPane2" pref="306" max="32767" attributes="0"/>
+                                      <Component id="jScrollPane3" pref="0" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
+                              <Component id="pnlhdForm" max="32767" attributes="0"/>
                           </Group>
-                          <EmptySpace max="-2" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -2032,104 +2241,123 @@
                   <Layout>
                     <DimensionLayout dim="0">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="lblhdFormTitle" alignment="1" max="32767" attributes="0"/>
+                          <Component id="lblhdFormTT1" alignment="1" max="32767" attributes="0"/>
+                          <Component id="lblhdFormTT2" alignment="0" max="32767" attributes="0"/>
+                          <Component id="lblhdFormTT3" alignment="0" max="32767" attributes="0"/>
                           <Group type="102" attributes="0">
+                              <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="102" attributes="0">
                                       <Group type="103" groupAlignment="0" attributes="0">
                                           <Group type="102" attributes="0">
-                                              <EmptySpace max="-2" attributes="0"/>
-                                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                              <Group type="103" groupAlignment="0" attributes="0">
                                                   <Component id="lblhdFormKH" alignment="0" min="-2" max="-2" attributes="0"/>
-                                                  <Group type="102" alignment="0" attributes="0">
-                                                      <Component id="lblhdFormNV" min="-2" pref="106" max="-2" attributes="0"/>
-                                                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                                                      <Group type="103" groupAlignment="0" attributes="0">
-                                                          <Component id="txthdFormKH" max="32767" attributes="0"/>
-                                                          <Component id="txthdFormNV" max="32767" attributes="0"/>
-                                                      </Group>
-                                                  </Group>
-                                                  <Group type="102" alignment="0" attributes="0">
-                                                      <Group type="103" groupAlignment="0" attributes="0">
-                                                          <Component id="ckbhdFormNL" min="-2" pref="79" max="-2" attributes="0"/>
-                                                          <Component id="lblhdFormPhg" alignment="0" min="-2" pref="102" max="-2" attributes="0"/>
-                                                      </Group>
-                                                      <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
-                                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                                          <Component id="dcrhdNgayLap1" pref="147" max="32767" attributes="0"/>
-                                                          <Component id="txthdFormGia2" alignment="0" max="32767" attributes="0"/>
-                                                          <Component id="txthdFormPhg" alignment="0" max="32767" attributes="0"/>
-                                                      </Group>
-                                                  </Group>
+                                                  <Component id="lblhdFormNV" alignment="0" min="-2" pref="106" max="-2" attributes="0"/>
+                                              </Group>
+                                              <EmptySpace max="-2" attributes="0"/>
+                                              <Group type="103" groupAlignment="0" attributes="0">
+                                                  <Component id="txthdFormNV" min="-2" pref="147" max="-2" attributes="0"/>
+                                                  <Component id="txthdFormKH" min="-2" pref="147" max="-2" attributes="0"/>
+                                                  <Component id="btnhdTim" alignment="0" min="-2" max="-2" attributes="0"/>
                                               </Group>
                                           </Group>
                                           <Group type="102" alignment="0" attributes="0">
-                                              <EmptySpace min="-2" pref="97" max="-2" attributes="0"/>
-                                              <Component id="btnhdTim" min="-2" pref="91" max="-2" attributes="0"/>
+                                              <Group type="103" groupAlignment="0" attributes="0">
+                                                  <Component id="lblhdFormMPTP" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="lblhdFormMP" alignment="0" min="-2" max="-2" attributes="0"/>
+                                              </Group>
+                                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                              <Group type="103" groupAlignment="0" attributes="0">
+                                                  <Component id="txthdFormMP" min="-2" pref="147" max="-2" attributes="0"/>
+                                                  <Component id="txthdFormMPTP" min="-2" pref="147" max="-2" attributes="0"/>
+                                                  <Component id="btnhdTim1" alignment="0" min="-2" max="-2" attributes="0"/>
+                                              </Group>
                                           </Group>
                                       </Group>
-                                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                      <EmptySpace pref="24" max="32767" attributes="0"/>
                                   </Group>
-                                  <Group type="102" attributes="0">
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Group type="102" alignment="0" attributes="0">
-                                              <Component id="lblhdFormGia" min="-2" pref="102" max="-2" attributes="0"/>
+                                  <Group type="102" alignment="1" attributes="0">
+                                      <Group type="103" groupAlignment="1" attributes="0">
+                                          <Group type="102" attributes="0">
+                                              <Group type="103" groupAlignment="0" attributes="0">
+                                                  <Component id="lblhdFormMPDV" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="lblhdFormMDV" alignment="0" min="-2" max="-2" attributes="0"/>
+                                              </Group>
                                               <EmptySpace max="32767" attributes="0"/>
-                                              <Component id="txthdFormGia1" min="-2" pref="147" max="-2" attributes="0"/>
+                                              <Group type="103" groupAlignment="0" attributes="0">
+                                                  <Component id="txthdFormMPDV" alignment="1" min="-2" pref="147" max="-2" attributes="0"/>
+                                                  <Component id="txthdFormMDV" alignment="1" min="-2" pref="147" max="-2" attributes="0"/>
+                                              </Group>
                                           </Group>
-                                          <Group type="102" alignment="0" attributes="0">
-                                              <Component id="lblhdFormDV" min="-2" pref="102" max="-2" attributes="0"/>
-                                              <EmptySpace max="32767" attributes="0"/>
-                                              <Component id="txthdFormDV" min="-2" pref="147" max="-2" attributes="0"/>
+                                          <Group type="102" alignment="1" attributes="0">
+                                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                              <Component id="btnhdTim2" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace min="-2" pref="56" max="-2" attributes="0"/>
                                           </Group>
                                       </Group>
+                                      <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
-                              <EmptySpace max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="1" attributes="0">
+                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                              <Component id="btnhdRef" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
                     <DimensionLayout dim="1">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
-                              <Group type="103" groupAlignment="1" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="102" attributes="0">
-                                      <Component id="lblhdFormTitle" min="-2" pref="37" max="-2" attributes="0"/>
+                                      <Component id="lblhdFormTT1" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" alignment="1" attributes="0">
+                                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                                       <Group type="103" groupAlignment="3" attributes="0">
                                           <Component id="lblhdFormKH" alignment="3" min="-2" max="-2" attributes="0"/>
                                           <Component id="txthdFormKH" alignment="3" min="-2" max="-2" attributes="0"/>
                                       </Group>
-                                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="3" attributes="0">
-                                          <Component id="lblhdFormNV" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="txthdFormNV" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                                      <Component id="dcrhdNgayLap1" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
                                   </Group>
-                                  <Component id="ckbhdFormNL" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="lblhdFormNV" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="txthdFormNV" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Component id="btnhdTim" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Component id="lblhdFormTT2" min="-2" pref="37" max="-2" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="lblhdFormMPTP" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="txthdFormMPTP" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="lblhdFormGia" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="txthdFormGia1" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="txthdFormMP" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblhdFormMP" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="txthdFormGia2" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Component id="btnhdTim1" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Component id="lblhdFormTT3" min="-2" pref="37" max="-2" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="txthdFormPhg" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="lblhdFormPhg" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblhdFormMPDV" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="txthdFormMPDV" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="lblhdFormMDV" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="txthdFormMDV" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="lblhdFormDV" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="txthdFormDV" alignment="3" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace min="-2" pref="82" max="-2" attributes="0"/>
-                              <Component id="btnhdTim" min="-2" pref="32" max="-2" attributes="0"/>
-                              <EmptySpace pref="123" max="32767" attributes="0"/>
+                              <Component id="btnhdTim2" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace pref="37" max="32767" attributes="0"/>
+                              <Component id="btnhdRef" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -2140,28 +2368,7 @@
                         <Property name="text" type="java.lang.String" value="M&#xe3; nh&#xe2;n vi&#xea;n"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JLabel" name="lblhdFormGia">
-                      <Properties>
-                        <Property name="text" type="java.lang.String" value="Gi&#xe1;"/>
-                      </Properties>
-                    </Component>
-                    <Component class="javax.swing.JLabel" name="lblhdFormTitle">
-                      <Properties>
-                        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                          <Font name="Tahoma" size="18" style="1"/>
-                        </Property>
-                        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                          <Color blue="ff" green="3a" red="53" type="rgb"/>
-                        </Property>
-                        <Property name="horizontalAlignment" type="int" value="0"/>
-                        <Property name="text" type="java.lang.String" value="T&#xec;m ki&#x1ebf;m"/>
-                      </Properties>
-                    </Component>
                     <Component class="javax.swing.JTextField" name="txthdFormNV">
-                    </Component>
-                    <Component class="javax.swing.JTextField" name="txthdFormGia1">
-                    </Component>
-                    <Component class="com.toedter.calendar.JDateChooser" name="dcrhdNgayLap1">
                     </Component>
                     <Component class="javax.swing.JLabel" name="lblhdFormKH">
                       <Properties>
@@ -2170,55 +2377,147 @@
                     </Component>
                     <Component class="javax.swing.JTextField" name="txthdFormKH">
                     </Component>
-                    <Component class="javax.swing.JTextField" name="txthdFormGia2">
-                    </Component>
-                    <Component class="javax.swing.JLabel" name="lblhdFormPhg">
-                      <Properties>
-                        <Property name="text" type="java.lang.String" value="S&#x1ed1; ph&#xf2;ng"/>
-                      </Properties>
-                    </Component>
-                    <Component class="javax.swing.JTextField" name="txthdFormPhg">
-                    </Component>
-                    <Component class="javax.swing.JLabel" name="lblhdFormDV">
-                      <Properties>
-                        <Property name="text" type="java.lang.String" value="M&#xe3; d&#x1ecb;ch v&#x1ee5;"/>
-                      </Properties>
-                    </Component>
-                    <Component class="javax.swing.JTextField" name="txthdFormDV">
-                    </Component>
                     <Component class="javax.swing.JButton" name="btnhdTim">
                       <Properties>
                         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                           <Image iconType="3" name="/Images/find.png"/>
                         </Property>
                         <Property name="text" type="java.lang.String" value="T&#xec;m"/>
+                        <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                          <Dimension value="[100, 35]"/>
+                        </Property>
                       </Properties>
                       <Events>
                         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnhdTimActionPerformed"/>
                       </Events>
                     </Component>
-                    <Component class="javax.swing.JCheckBox" name="ckbhdFormNL">
+                    <Component class="javax.swing.JLabel" name="lblhdFormTT1">
                       <Properties>
-                        <Property name="selected" type="boolean" value="true"/>
-                        <Property name="text" type="java.lang.String" value="Ng&#xe0;y l&#x1ead;p"/>
+                        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                          <Font name="Tahoma" size="18" style="1"/>
+                        </Property>
+                        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                          <Color blue="ff" green="3a" red="53" type="rgb"/>
+                        </Property>
+                        <Property name="horizontalAlignment" type="int" value="0"/>
+                        <Property name="text" type="java.lang.String" value="Th&#xf4;ng tin h&#xf3;a &#x111;&#x1a1;n"/>
                       </Properties>
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="lblhdFormTT2">
+                      <Properties>
+                        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                          <Font name="Tahoma" size="18" style="1"/>
+                        </Property>
+                        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                          <Color blue="ff" green="3a" red="53" type="rgb"/>
+                        </Property>
+                        <Property name="horizontalAlignment" type="int" value="0"/>
+                        <Property name="text" type="java.lang.String" value="Th&#xf4;ng tin phi&#x1ebf;u thu&#xea; ph&#xf2;ng"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="lblhdFormTT3">
+                      <Properties>
+                        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                          <Font name="Tahoma" size="18" style="1"/>
+                        </Property>
+                        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                          <Color blue="ff" green="3a" red="53" type="rgb"/>
+                        </Property>
+                        <Property name="horizontalAlignment" type="int" value="0"/>
+                        <Property name="text" type="java.lang.String" value="Th&#xf4;ng tin phi&#x1ebf;u d&#x1ecb;ch v&#x1ee5;"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="lblhdFormMPTP">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="M&#xe3; phi&#x1ebf;u thu&#xea; ph&#xf2;ng"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="lblhdFormMP">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="M&#xe3; ph&#xf2;ng"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="lblhdFormMPDV">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="M&#xe3; phi&#x1ebf;u d&#x1ecb;ch v&#x1ee5;"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="lblhdFormMDV">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="M&#xe3; d&#x1ecb;ch v&#x1ee5;"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JTextField" name="txthdFormMP">
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txthdFormMPActionPerformed"/>
+                      </Events>
+                    </Component>
+                    <Component class="javax.swing.JTextField" name="txthdFormMPDV">
+                    </Component>
+                    <Component class="javax.swing.JButton" name="btnhdTim1">
+                      <Properties>
+                        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                          <Image iconType="3" name="/Images/find.png"/>
+                        </Property>
+                        <Property name="text" type="java.lang.String" value="T&#xec;m"/>
+                        <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                          <Dimension value="[100, 35]"/>
+                        </Property>
+                      </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnhdTim1ActionPerformed"/>
+                      </Events>
+                    </Component>
+                    <Component class="javax.swing.JTextField" name="txthdFormMPTP">
+                    </Component>
+                    <Component class="javax.swing.JTextField" name="txthdFormMDV">
+                    </Component>
+                    <Component class="javax.swing.JButton" name="btnhdTim2">
+                      <Properties>
+                        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                          <Image iconType="3" name="/Images/find.png"/>
+                        </Property>
+                        <Property name="text" type="java.lang.String" value="T&#xec;m"/>
+                        <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                          <Dimension value="[100, 35]"/>
+                        </Property>
+                      </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnhdTim2ActionPerformed"/>
+                      </Events>
+                    </Component>
+                    <Component class="javax.swing.JButton" name="btnhdRef">
+                      <Properties>
+                        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                          <Image iconType="3" name="/Images/refresh.png"/>
+                        </Property>
+                        <Property name="text" type="java.lang.String" value="Refresh"/>
+                        <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                          <Dimension value="[100, 35]"/>
+                        </Property>
+                      </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnhdRefActionPerformed"/>
+                      </Events>
                     </Component>
                   </SubComponents>
                 </Container>
-                <Container class="javax.swing.JScrollPane" name="srlhdData">
+                <Container class="javax.swing.JScrollPane" name="jScrollPane1">
+                  <AuxValues>
+                    <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+                  </AuxValues>
 
                   <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
                   <SubComponents>
                     <Component class="javax.swing.JTable" name="tblhdData">
                       <Properties>
                         <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                          <Table columnCount="0" rowCount="4"/>
-                        </Property>
-                        <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
-                          <TableColumnModel selectionModel="0"/>
-                        </Property>
-                        <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
-                          <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
+                          <Table columnCount="4" rowCount="4">
+                            <Column editable="true" title="Title 1" type="java.lang.Object"/>
+                            <Column editable="true" title="Title 2" type="java.lang.Object"/>
+                            <Column editable="true" title="Title 3" type="java.lang.Object"/>
+                            <Column editable="true" title="Title 4" type="java.lang.Object"/>
+                          </Table>
                         </Property>
                       </Properties>
                       <Events>
@@ -2227,39 +2526,43 @@
                     </Component>
                   </SubComponents>
                 </Container>
-                <Container class="javax.swing.JScrollPane" name="srlhdData1">
+                <Container class="javax.swing.JScrollPane" name="jScrollPane2">
+                  <AuxValues>
+                    <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+                  </AuxValues>
 
                   <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
                   <SubComponents>
-                    <Component class="javax.swing.JTable" name="tblhdData1">
+                    <Component class="javax.swing.JTable" name="tblptpData">
                       <Properties>
                         <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                          <Table columnCount="0" rowCount="4"/>
-                        </Property>
-                        <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
-                          <TableColumnModel selectionModel="0"/>
-                        </Property>
-                        <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
-                          <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
+                          <Table columnCount="4" rowCount="4">
+                            <Column editable="true" title="Title 1" type="java.lang.Object"/>
+                            <Column editable="true" title="Title 2" type="java.lang.Object"/>
+                            <Column editable="true" title="Title 3" type="java.lang.Object"/>
+                            <Column editable="true" title="Title 4" type="java.lang.Object"/>
+                          </Table>
                         </Property>
                       </Properties>
                     </Component>
                   </SubComponents>
                 </Container>
-                <Container class="javax.swing.JScrollPane" name="srlhdData2">
+                <Container class="javax.swing.JScrollPane" name="jScrollPane3">
+                  <AuxValues>
+                    <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+                  </AuxValues>
 
                   <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
                   <SubComponents>
-                    <Component class="javax.swing.JTable" name="tblhdData2">
+                    <Component class="javax.swing.JTable" name="tblpdvData">
                       <Properties>
                         <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                          <Table columnCount="0" rowCount="4"/>
-                        </Property>
-                        <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
-                          <TableColumnModel selectionModel="0"/>
-                        </Property>
-                        <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
-                          <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
+                          <Table columnCount="4" rowCount="4">
+                            <Column editable="true" title="Title 1" type="java.lang.Object"/>
+                            <Column editable="true" title="Title 2" type="java.lang.Object"/>
+                            <Column editable="true" title="Title 3" type="java.lang.Object"/>
+                            <Column editable="true" title="Title 4" type="java.lang.Object"/>
+                          </Table>
                         </Property>
                       </Properties>
                     </Component>
@@ -2315,19 +2618,19 @@
                       <Layout>
                         <DimensionLayout dim="0">
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" alignment="1" attributes="0">
-                                  <EmptySpace pref="343" max="32767" attributes="0"/>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace min="-2" pref="279" max="-2" attributes="0"/>
                                   <Component id="chrtkTN" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="276" max="-2" attributes="0"/>
+                                  <EmptySpace pref="418" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                         </DimensionLayout>
                         <DimensionLayout dim="1">
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
                                   <Component id="chrtkTN" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace pref="146" max="32767" attributes="0"/>
+                                  <EmptySpace pref="168" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                         </DimensionLayout>
@@ -2372,10 +2675,10 @@
                       <Layout>
                         <DimensionLayout dim="0">
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" alignment="1" attributes="0">
-                                  <EmptySpace pref="320" max="32767" attributes="0"/>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace min="-2" pref="250" max="-2" attributes="0"/>
                                   <Component id="chrtkDV" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="299" max="-2" attributes="0"/>
+                                  <EmptySpace pref="447" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                         </DimensionLayout>
@@ -2384,7 +2687,7 @@
                               <Group type="102" alignment="0" attributes="0">
                                   <EmptySpace min="-2" pref="73" max="-2" attributes="0"/>
                                   <Component id="chrtkDV" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace pref="108" max="32767" attributes="0"/>
+                                  <EmptySpace pref="145" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                         </DimensionLayout>
@@ -2433,18 +2736,18 @@
                         <DimensionLayout dim="0">
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace min="-2" pref="289" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="291" max="-2" attributes="0"/>
                                   <Component id="chrtkDS" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace pref="330" max="32767" attributes="0"/>
+                                  <EmptySpace pref="406" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                         </DimensionLayout>
                         <DimensionLayout dim="1">
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" alignment="1" attributes="0">
-                                  <EmptySpace pref="94" max="32767" attributes="0"/>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace min="-2" pref="52" max="-2" attributes="0"/>
                                   <Component id="chrtkDS" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="87" max="-2" attributes="0"/>
+                                  <EmptySpace pref="166" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                         </DimensionLayout>

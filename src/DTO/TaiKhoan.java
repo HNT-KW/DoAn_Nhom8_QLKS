@@ -22,6 +22,10 @@ public class TaiKhoan
 		m_tentk = tentk;
 	}
 
+    public TaiKhoan() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
 	public String getTenTK()
 	{
 		return m_tentk;

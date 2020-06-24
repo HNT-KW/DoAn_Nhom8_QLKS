@@ -1,6 +1,15 @@
-
 package GUI;
+
+import BUS.DichVuBUS;
+import BUS.HoaDonBUS;
+import BUS.KhachHangBUS;
+import BUS.NhanVienBUS;
+import BUS.PhieuDichVuBUS;
+import BUS.PhieuThuePhongBUS;
 import BUS.PhongBUS;
+import BUS.TaiKhoanBUS;
+import DTO.HoaDon;
+import DTO.PhieuThuePhong;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -11,6 +20,7 @@ import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableCellRenderer;
+
 public class QuanLyGUI extends javax.swing.JFrame {
 
     /**
@@ -20,29 +30,29 @@ public class QuanLyGUI extends javax.swing.JFrame {
      */
     public QuanLyGUI() throws SQLException {
         initComponents();
-        
+
         this.pack();
         setLocationRelativeTo(null);
         setExtendedState(this.MAXIMIZED_BOTH);
-     
+
         try {
             DefaultTableCellRenderer renderer = new DefaultTableCellRenderer();// đối tượng thao tác với ô trong table
             renderer.setHorizontalAlignment(JLabel.CENTER);// Căn giữa dữ liệu bảng
 
-         
         } catch (Exception ex) {
             Logger.getLogger(QuanLyGUI.class.getName()).log(Level.SEVERE, null, ex);
             System.out.println("Error in QuanLyGUI: " + ex.getMessage());
         }
-		
-		BUS.KhachHangBUS.init(tblkhData);
-		BUS.NhanVienBUS.init(tblnvData);
-		BUS.TaiKhoanBUS.init(tbltkData);
-		BUS.PhongBUS.init(tblpData, tblpDatal);
-		BUS.DichVuBUS.init(tbldvData);
-		BUS.ThongKe.init(chrtkTN, chrtkDV, chrtkDS);
+
+        BUS.KhachHangBUS.init(tblkhData);
+        BUS.NhanVienBUS.init(tblnvData);
+        BUS.TaiKhoanBUS.init(tbltkData);
+        BUS.PhongBUS.init(tblpData, tblpDatal);
+        BUS.DichVuBUS.init(tbldvData);
+        BUS.ThongKe.init(chrtkTN, chrtkDV, chrtkDS);
     }
-    public void enabledFrame(){
+
+    public void enabledFrame() {
         this.setEnabled(true);
     }
 
@@ -89,6 +99,8 @@ public class QuanLyGUI extends javax.swing.JFrame {
         btnkhThem = new javax.swing.JButton();
         btnkhSua = new javax.swing.JButton();
         btnkhTim = new javax.swing.JButton();
+        btnkhXoa = new javax.swing.JButton();
+        btnkhRef = new javax.swing.JButton();
         tabNhanVien = new javax.swing.JPanel();
         lblnvTitle = new javax.swing.JLabel();
         pnlnvForm = new javax.swing.JPanel();
@@ -118,6 +130,8 @@ public class QuanLyGUI extends javax.swing.JFrame {
         btnnvThem = new javax.swing.JButton();
         btnnvSua = new javax.swing.JButton();
         btnnvTim = new javax.swing.JButton();
+        btnnvXoa = new javax.swing.JButton();
+        btnnvRef = new javax.swing.JButton();
         tabTaiKhoan = new javax.swing.JPanel();
         lbltkTitle = new javax.swing.JLabel();
         pnltkForm = new javax.swing.JPanel();
@@ -147,6 +161,8 @@ public class QuanLyGUI extends javax.swing.JFrame {
         btntkThem = new javax.swing.JButton();
         btntkSua = new javax.swing.JButton();
         btntkTim = new javax.swing.JButton();
+        btntkRef = new javax.swing.JButton();
+        btntkXoa = new javax.swing.JButton();
         tabPhong = new javax.swing.JPanel();
         lblpTitle = new javax.swing.JLabel();
         pnlpForm = new javax.swing.JPanel();
@@ -195,30 +211,35 @@ public class QuanLyGUI extends javax.swing.JFrame {
         btndvThem = new javax.swing.JButton();
         btndvSua = new javax.swing.JButton();
         btndvXoa = new javax.swing.JButton();
+        btndvRef = new javax.swing.JButton();
         tabHoaDon = new javax.swing.JPanel();
         lblhdTitle = new javax.swing.JLabel();
         pnlhdForm = new javax.swing.JPanel();
         lblhdFormNV = new javax.swing.JLabel();
-        lblhdFormGia = new javax.swing.JLabel();
-        lblhdFormTitle = new javax.swing.JLabel();
         txthdFormNV = new javax.swing.JTextField();
-        txthdFormGia1 = new javax.swing.JTextField();
-        dcrhdNgayLap1 = new com.toedter.calendar.JDateChooser();
         lblhdFormKH = new javax.swing.JLabel();
         txthdFormKH = new javax.swing.JTextField();
-        txthdFormGia2 = new javax.swing.JTextField();
-        lblhdFormPhg = new javax.swing.JLabel();
-        txthdFormPhg = new javax.swing.JTextField();
-        lblhdFormDV = new javax.swing.JLabel();
-        txthdFormDV = new javax.swing.JTextField();
         btnhdTim = new javax.swing.JButton();
-        ckbhdFormNL = new javax.swing.JCheckBox();
-        srlhdData = new javax.swing.JScrollPane();
+        lblhdFormTT1 = new javax.swing.JLabel();
+        lblhdFormTT2 = new javax.swing.JLabel();
+        lblhdFormTT3 = new javax.swing.JLabel();
+        lblhdFormMPTP = new javax.swing.JLabel();
+        lblhdFormMP = new javax.swing.JLabel();
+        lblhdFormMPDV = new javax.swing.JLabel();
+        lblhdFormMDV = new javax.swing.JLabel();
+        txthdFormMP = new javax.swing.JTextField();
+        txthdFormMPDV = new javax.swing.JTextField();
+        btnhdTim1 = new javax.swing.JButton();
+        txthdFormMPTP = new javax.swing.JTextField();
+        txthdFormMDV = new javax.swing.JTextField();
+        btnhdTim2 = new javax.swing.JButton();
+        btnhdRef = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
         tblhdData = new javax.swing.JTable();
-        srlhdData1 = new javax.swing.JScrollPane();
-        tblhdData1 = new javax.swing.JTable();
-        srlhdData2 = new javax.swing.JScrollPane();
-        tblhdData2 = new javax.swing.JTable();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        tblptpData = new javax.swing.JTable();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        tblpdvData = new javax.swing.JTable();
         tabThongKe = new javax.swing.JPanel();
         tabThongKeCon = new javax.swing.JTabbedPane();
         tabThuNhap = new javax.swing.JPanel();
@@ -304,6 +325,7 @@ public class QuanLyGUI extends javax.swing.JFrame {
 
         pnlkhForm.setBackground(new java.awt.Color(240, 255, 182));
         pnlkhForm.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 51, 255), 2));
+        pnlkhForm.setPreferredSize(new java.awt.Dimension(340, 530));
 
         lblkhFormNgaySinh.setText("Ngày sinh:");
 
@@ -365,7 +387,7 @@ public class QuanLyGUI extends javax.swing.JFrame {
                             .addComponent(txtkhFormTen, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtkhFormEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(cbbkhFormGioiTinh, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(53, Short.MAX_VALUE))
+                .addContainerGap(47, Short.MAX_VALUE))
         );
         pnlkhFormLayout.setVerticalGroup(
             pnlkhFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -406,7 +428,7 @@ public class QuanLyGUI extends javax.swing.JFrame {
                 .addGroup(pnlkhFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblkhFormQuocTich)
                     .addComponent(txtkhFormQuocTich, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(138, Short.MAX_VALUE))
+                .addContainerGap(179, Short.MAX_VALUE))
         );
 
         tblkhData.setModel(new javax.swing.table.DefaultTableModel(
@@ -429,6 +451,7 @@ public class QuanLyGUI extends javax.swing.JFrame {
 
         btnkhThem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/adduser.png"))); // NOI18N
         btnkhThem.setText("thêm");
+        btnkhThem.setPreferredSize(new java.awt.Dimension(100, 35));
         btnkhThem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnkhThemActionPerformed(evt);
@@ -437,6 +460,7 @@ public class QuanLyGUI extends javax.swing.JFrame {
 
         btnkhSua.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/edituser.png"))); // NOI18N
         btnkhSua.setText("sửa");
+        btnkhSua.setPreferredSize(new java.awt.Dimension(100, 35));
         btnkhSua.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnkhSuaActionPerformed(evt);
@@ -445,9 +469,28 @@ public class QuanLyGUI extends javax.swing.JFrame {
 
         btnkhTim.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/find.png"))); // NOI18N
         btnkhTim.setText("Tìm");
+        btnkhTim.setPreferredSize(new java.awt.Dimension(100, 35));
         btnkhTim.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnkhTimActionPerformed(evt);
+            }
+        });
+
+        btnkhXoa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/removeuser.png"))); // NOI18N
+        btnkhXoa.setText("xóa");
+        btnkhXoa.setPreferredSize(new java.awt.Dimension(100, 35));
+        btnkhXoa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnkhXoaActionPerformed(evt);
+            }
+        });
+
+        btnkhRef.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/refresh.png"))); // NOI18N
+        btnkhRef.setText("Refresh");
+        btnkhRef.setPreferredSize(new java.awt.Dimension(100, 35));
+        btnkhRef.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnkhRefActionPerformed(evt);
             }
         });
 
@@ -460,29 +503,40 @@ public class QuanLyGUI extends javax.swing.JFrame {
                 .addGap(40, 40, 40)
                 .addComponent(pnlkhForm, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addGroup(tabKhachHangLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btnkhThem, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnkhSua, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnkhTim, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(18, 18, 18)
-                .addComponent(srlkhData, javax.swing.GroupLayout.DEFAULT_SIZE, 661, Short.MAX_VALUE)
-                .addContainerGap())
+                .addGroup(tabKhachHangLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(tabKhachHangLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(btnkhThem, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnkhSua, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnkhTim, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(btnkhXoa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnkhRef, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(srlkhData, javax.swing.GroupLayout.DEFAULT_SIZE, 754, Short.MAX_VALUE))
         );
         tabKhachHangLayout.setVerticalGroup(
             tabKhachHangLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(tabKhachHangLayout.createSequentialGroup()
                 .addComponent(lblkhTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(tabKhachHangLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(tabKhachHangLayout.createSequentialGroup()
-                        .addGap(119, 119, 119)
-                        .addComponent(btnkhTim, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(39, 39, 39)
-                        .addComponent(btnkhThem, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(37, 37, 37)
-                        .addComponent(btnkhSua, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(srlkhData, javax.swing.GroupLayout.PREFERRED_SIZE, 447, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(pnlkhForm, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(tabKhachHangLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(pnlkhForm, javax.swing.GroupLayout.DEFAULT_SIZE, 528, Short.MAX_VALUE)
+                            .addGroup(tabKhachHangLayout.createSequentialGroup()
+                                .addGap(119, 119, 119)
+                                .addComponent(btnkhTim, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(39, 39, 39)
+                                .addComponent(btnkhThem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(37, 37, 37)
+                                .addComponent(btnkhSua, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(39, 39, 39)
+                                .addComponent(btnkhXoa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(34, 34, 34)
+                                .addComponent(btnkhRef, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 101, Short.MAX_VALUE))))
+                    .addGroup(tabKhachHangLayout.createSequentialGroup()
+                        .addGap(6, 6, 6)
+                        .addComponent(srlkhData)))
                 .addGap(24, 24, 24))
         );
 
@@ -497,6 +551,7 @@ public class QuanLyGUI extends javax.swing.JFrame {
 
         pnlnvForm.setBackground(new java.awt.Color(240, 255, 182));
         pnlnvForm.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 51, 255), 2));
+        pnlnvForm.setPreferredSize(new java.awt.Dimension(340, 530));
 
         lblnvFormNgaySinh.setText("Ngày sinh:");
 
@@ -569,7 +624,7 @@ public class QuanLyGUI extends javax.swing.JFrame {
                             .addComponent(txtnvFormSDT, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(dcrnvFormNgaySinh, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtnvFormTen, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(53, Short.MAX_VALUE))
+                .addContainerGap(45, Short.MAX_VALUE))
         );
         pnlnvFormLayout.setVerticalGroup(
             pnlnvFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -614,7 +669,7 @@ public class QuanLyGUI extends javax.swing.JFrame {
                 .addGroup(pnlnvFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblnvFormLuong)
                     .addComponent(txtnvFormLuong, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(166, Short.MAX_VALUE))
         );
 
         tblnvData.setModel(new javax.swing.table.DefaultTableModel(
@@ -637,6 +692,7 @@ public class QuanLyGUI extends javax.swing.JFrame {
 
         btnnvThem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/adduser.png"))); // NOI18N
         btnnvThem.setText("thêm");
+        btnnvThem.setPreferredSize(new java.awt.Dimension(100, 35));
         btnnvThem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnnvThemActionPerformed(evt);
@@ -645,6 +701,7 @@ public class QuanLyGUI extends javax.swing.JFrame {
 
         btnnvSua.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/edituser.png"))); // NOI18N
         btnnvSua.setText("sửa");
+        btnnvSua.setPreferredSize(new java.awt.Dimension(100, 35));
         btnnvSua.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnnvSuaActionPerformed(evt);
@@ -653,9 +710,28 @@ public class QuanLyGUI extends javax.swing.JFrame {
 
         btnnvTim.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/find.png"))); // NOI18N
         btnnvTim.setText("Tìm");
+        btnnvTim.setPreferredSize(new java.awt.Dimension(100, 35));
         btnnvTim.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnnvTimActionPerformed(evt);
+            }
+        });
+
+        btnnvXoa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/removeuser.png"))); // NOI18N
+        btnnvXoa.setText("xóa");
+        btnnvXoa.setPreferredSize(new java.awt.Dimension(100, 35));
+        btnnvXoa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnnvXoaActionPerformed(evt);
+            }
+        });
+
+        btnnvRef.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/refresh.png"))); // NOI18N
+        btnnvRef.setText("Refresh");
+        btnnvRef.setPreferredSize(new java.awt.Dimension(100, 35));
+        btnnvRef.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnnvRefActionPerformed(evt);
             }
         });
 
@@ -668,12 +744,17 @@ public class QuanLyGUI extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(pnlnvForm, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(tabNhanVienLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btnnvThem, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnnvSua, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnnvTim, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(tabNhanVienLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(tabNhanVienLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(tabNhanVienLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(btnnvThem, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnnvSua, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnnvTim, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(btnnvXoa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnnvRef, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(srlnvData, javax.swing.GroupLayout.DEFAULT_SIZE, 725, Short.MAX_VALUE))
+                .addComponent(srlnvData, javax.swing.GroupLayout.DEFAULT_SIZE, 790, Short.MAX_VALUE)
+                .addContainerGap())
         );
         tabNhanVienLayout.setVerticalGroup(
             tabNhanVienLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -681,19 +762,23 @@ public class QuanLyGUI extends javax.swing.JFrame {
                 .addComponent(lblnvTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(tabNhanVienLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(tabNhanVienLayout.createSequentialGroup()
-                        .addGap(142, 142, 142)
-                        .addComponent(btnnvTim, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnnvThem, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnnvSua, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap())
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, tabNhanVienLayout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(srlnvData, javax.swing.GroupLayout.DEFAULT_SIZE, 527, Short.MAX_VALUE))
+                        .addComponent(pnlnvForm, javax.swing.GroupLayout.DEFAULT_SIZE, 552, Short.MAX_VALUE))
                     .addGroup(tabNhanVienLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(pnlnvForm, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addGap(142, 142, 142)
+                        .addComponent(btnnvTim, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnnvThem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnnvSua, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnnvXoa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(38, 38, 38)
+                        .addComponent(btnnvRef, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())
+                    .addGroup(tabNhanVienLayout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(srlnvData))))
         );
 
         tabquanly.addTab("Nhân viên", tabNhanVien);
@@ -707,6 +792,7 @@ public class QuanLyGUI extends javax.swing.JFrame {
 
         pnltkForm.setBackground(new java.awt.Color(240, 255, 182));
         pnltkForm.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 51, 255), 2));
+        pnltkForm.setPreferredSize(new java.awt.Dimension(340, 530));
 
         lbltkFormMatKhau.setText("Mật khẩu");
 
@@ -785,7 +871,7 @@ public class QuanLyGUI extends javax.swing.JFrame {
                                 .addComponent(lbltkFormChucVu, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
                                 .addComponent(txttkFormChucVu, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 43, Short.MAX_VALUE)))
+                        .addGap(0, 37, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         pnltkFormLayout.setVerticalGroup(
@@ -831,7 +917,7 @@ public class QuanLyGUI extends javax.swing.JFrame {
                 .addGroup(pnltkFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbltkFormChucVu)
                     .addComponent(txttkFormChucVu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(116, Short.MAX_VALUE))
         );
 
         tbltkData.setModel(new javax.swing.table.DefaultTableModel(
@@ -854,6 +940,7 @@ public class QuanLyGUI extends javax.swing.JFrame {
 
         btntkThem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/adduser.png"))); // NOI18N
         btntkThem.setText("thêm");
+        btntkThem.setPreferredSize(new java.awt.Dimension(100, 35));
         btntkThem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btntkThemActionPerformed(evt);
@@ -862,6 +949,7 @@ public class QuanLyGUI extends javax.swing.JFrame {
 
         btntkSua.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/edituser.png"))); // NOI18N
         btntkSua.setText("sửa");
+        btntkSua.setPreferredSize(new java.awt.Dimension(100, 35));
         btntkSua.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btntkSuaActionPerformed(evt);
@@ -870,9 +958,28 @@ public class QuanLyGUI extends javax.swing.JFrame {
 
         btntkTim.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/find.png"))); // NOI18N
         btntkTim.setText("Tìm");
+        btntkTim.setPreferredSize(new java.awt.Dimension(100, 35));
         btntkTim.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btntkTimActionPerformed(evt);
+            }
+        });
+
+        btntkRef.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/refresh.png"))); // NOI18N
+        btntkRef.setText("Refresh");
+        btntkRef.setPreferredSize(new java.awt.Dimension(100, 35));
+        btntkRef.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btntkRefActionPerformed(evt);
+            }
+        });
+
+        btntkXoa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/removeuser.png"))); // NOI18N
+        btntkXoa.setText("xóa");
+        btntkXoa.setPreferredSize(new java.awt.Dimension(100, 35));
+        btntkXoa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btntkXoaActionPerformed(evt);
             }
         });
 
@@ -880,37 +987,46 @@ public class QuanLyGUI extends javax.swing.JFrame {
         tabTaiKhoan.setLayout(tabTaiKhoanLayout);
         tabTaiKhoanLayout.setHorizontalGroup(
             tabTaiKhoanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(lbltkTitle, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(tabTaiKhoanLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(pnltkForm, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(tabTaiKhoanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btntkTim, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btntkThem, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btntkSua, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(srltkData, javax.swing.GroupLayout.DEFAULT_SIZE, 715, Short.MAX_VALUE)
+                .addGroup(tabTaiKhoanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(tabTaiKhoanLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(pnltkForm, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(tabTaiKhoanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(btntkTim, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btntkThem, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btntkSua, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btntkRef, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btntkXoa, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(srltkData, javax.swing.GroupLayout.DEFAULT_SIZE, 790, Short.MAX_VALUE))
+                    .addComponent(lbltkTitle, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         tabTaiKhoanLayout.setVerticalGroup(
             tabTaiKhoanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(tabTaiKhoanLayout.createSequentialGroup()
                 .addComponent(lbltkTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGroup(tabTaiKhoanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(tabTaiKhoanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(tabTaiKhoanLayout.createSequentialGroup()
-                        .addGap(103, 103, 103)
-                        .addComponent(btntkTim, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(79, 79, 79)
+                        .addComponent(btntkTim, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(btntkThem, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btntkThem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(btntkSua, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btntkSua, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(btntkXoa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(27, 27, 27)
+                        .addComponent(btntkRef, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(tabTaiKhoanLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(tabTaiKhoanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(srltkData, javax.swing.GroupLayout.DEFAULT_SIZE, 507, Short.MAX_VALUE)
-                            .addComponent(pnltkForm, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(srltkData, javax.swing.GroupLayout.DEFAULT_SIZE, 558, Short.MAX_VALUE)
+                        .addContainerGap())
+                    .addGroup(tabTaiKhoanLayout.createSequentialGroup()
+                        .addComponent(pnltkForm, javax.swing.GroupLayout.DEFAULT_SIZE, 532, Short.MAX_VALUE)
                         .addGap(20, 20, 20))))
         );
 
@@ -925,6 +1041,7 @@ public class QuanLyGUI extends javax.swing.JFrame {
 
         pnlpForm.setBackground(new java.awt.Color(240, 255, 182));
         pnlpForm.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 51, 255), 2));
+        pnlpForm.setPreferredSize(new java.awt.Dimension(340, 530));
 
         lblpFormTenlp.setText("Tên");
 
@@ -978,7 +1095,7 @@ public class QuanLyGUI extends javax.swing.JFrame {
                                         .addGroup(pnlpFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                             .addComponent(txtpFormTenllp, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addComponent(txtpFormGia, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                                .addGap(0, 0, Short.MAX_VALUE))
+                                .addGap(0, 37, Short.MAX_VALUE))
                             .addComponent(lblpFormTitleLP, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(sprpFormChia)))
                     .addGroup(pnlpFormLayout.createSequentialGroup()
@@ -989,7 +1106,7 @@ public class QuanLyGUI extends javax.swing.JFrame {
                             .addGroup(pnlpFormLayout.createSequentialGroup()
                                 .addGap(20, 20, 20)
                                 .addComponent(srlpFormMoTa, javax.swing.GroupLayout.PREFERRED_SIZE, 305, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 39, Short.MAX_VALUE)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         pnlpFormLayout.setVerticalGroup(
@@ -1052,6 +1169,7 @@ public class QuanLyGUI extends javax.swing.JFrame {
 
         btnpThem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/adduser.png"))); // NOI18N
         btnpThem.setText("thêm");
+        btnpThem.setPreferredSize(new java.awt.Dimension(100, 35));
         btnpThem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnpThemActionPerformed(evt);
@@ -1060,6 +1178,7 @@ public class QuanLyGUI extends javax.swing.JFrame {
 
         btnpSua.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/edituser.png"))); // NOI18N
         btnpSua.setText("sửa");
+        btnpSua.setPreferredSize(new java.awt.Dimension(100, 35));
         btnpSua.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnpSuaActionPerformed(evt);
@@ -1075,6 +1194,7 @@ public class QuanLyGUI extends javax.swing.JFrame {
 
         btnpXoa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/removeuser.png"))); // NOI18N
         btnpXoa.setText("xóa");
+        btnpXoa.setPreferredSize(new java.awt.Dimension(100, 35));
         btnpXoa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnpXoaActionPerformed(evt);
@@ -1101,6 +1221,7 @@ public class QuanLyGUI extends javax.swing.JFrame {
 
         btnpTheml.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/adduser.png"))); // NOI18N
         btnpTheml.setText("thêm");
+        btnpTheml.setPreferredSize(new java.awt.Dimension(100, 35));
         btnpTheml.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnpThemlActionPerformed(evt);
@@ -1109,6 +1230,7 @@ public class QuanLyGUI extends javax.swing.JFrame {
 
         btnpSual.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/edituser.png"))); // NOI18N
         btnpSual.setText("sửa");
+        btnpSual.setPreferredSize(new java.awt.Dimension(100, 35));
         btnpSual.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnpSualActionPerformed(evt);
@@ -1117,6 +1239,7 @@ public class QuanLyGUI extends javax.swing.JFrame {
 
         btnpXoal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/removeuser.png"))); // NOI18N
         btnpXoal.setText("xóa");
+        btnpXoal.setPreferredSize(new java.awt.Dimension(100, 35));
         btnpXoal.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnpXoalActionPerformed(evt);
@@ -1138,16 +1261,16 @@ public class QuanLyGUI extends javax.swing.JFrame {
                                 .addGap(10, 10, 10)
                                 .addGroup(tabPhongLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(btnpTheml, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(btnpXoal, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(btnpXoal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(btnpSual, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                             .addGroup(tabPhongLayout.createSequentialGroup()
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(btnpThem))
+                                .addComponent(btnpThem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, tabPhongLayout.createSequentialGroup()
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(tabPhongLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(btnpSua, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(btnpXoa, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                    .addComponent(btnpSua, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(btnpXoa, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                     .addGroup(tabPhongLayout.createSequentialGroup()
                         .addGap(72, 72, 72)
                         .addComponent(lblpTiemKiem)
@@ -1157,7 +1280,7 @@ public class QuanLyGUI extends javax.swing.JFrame {
                         .addComponent(tbtpTang)))
                 .addGap(18, 18, 18)
                 .addGroup(tabPhongLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(srlpData, javax.swing.GroupLayout.DEFAULT_SIZE, 649, Short.MAX_VALUE)
+                    .addComponent(srlpData, javax.swing.GroupLayout.DEFAULT_SIZE, 756, Short.MAX_VALUE)
                     .addComponent(srlpDatal))
                 .addContainerGap())
         );
@@ -1175,25 +1298,25 @@ public class QuanLyGUI extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(tabPhongLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(tabPhongLayout.createSequentialGroup()
-                                .addComponent(btnpThem, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(btnpThem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(btnpSua, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(btnpSua, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(btnpXoa, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(btnpXoa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(0, 0, Short.MAX_VALUE))
-                            .addComponent(pnlpForm, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(pnlpForm, javax.swing.GroupLayout.DEFAULT_SIZE, 499, Short.MAX_VALUE))
                         .addContainerGap())
                     .addGroup(tabPhongLayout.createSequentialGroup()
                         .addComponent(srlpData, javax.swing.GroupLayout.PREFERRED_SIZE, 303, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(tabPhongLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(tabPhongLayout.createSequentialGroup()
-                                .addComponent(btnpTheml, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(btnpTheml, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(btnpSual, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(btnpSual, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(btnpXoal, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 85, Short.MAX_VALUE))
+                                .addComponent(btnpXoal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 114, Short.MAX_VALUE))
                             .addComponent(srlpDatal, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)))))
         );
 
@@ -1208,6 +1331,7 @@ public class QuanLyGUI extends javax.swing.JFrame {
 
         pnldvForm.setBackground(new java.awt.Color(240, 255, 182));
         pnldvForm.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 51, 255), 2));
+        pnldvForm.setPreferredSize(new java.awt.Dimension(340, 530));
 
         lbldvFormTen.setText("Tên");
 
@@ -1255,7 +1379,7 @@ public class QuanLyGUI extends javax.swing.JFrame {
                     .addGroup(pnldvFormLayout.createSequentialGroup()
                         .addGap(26, 26, 26)
                         .addComponent(srldvMoTa, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(26, Short.MAX_VALUE))
+                .addContainerGap(20, Short.MAX_VALUE))
         );
         pnldvFormLayout.setVerticalGroup(
             pnldvFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1276,7 +1400,7 @@ public class QuanLyGUI extends javax.swing.JFrame {
                 .addComponent(lbldvFormMoTa)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(srldvMoTa, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(75, Short.MAX_VALUE))
+                .addContainerGap(153, Short.MAX_VALUE))
         );
 
         tbldvData.setModel(new javax.swing.table.DefaultTableModel(
@@ -1299,6 +1423,7 @@ public class QuanLyGUI extends javax.swing.JFrame {
 
         btndvThem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/adduser.png"))); // NOI18N
         btndvThem.setText("thêm");
+        btndvThem.setPreferredSize(new java.awt.Dimension(100, 35));
         btndvThem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btndvThemActionPerformed(evt);
@@ -1307,6 +1432,7 @@ public class QuanLyGUI extends javax.swing.JFrame {
 
         btndvSua.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/edituser.png"))); // NOI18N
         btndvSua.setText("sửa");
+        btndvSua.setPreferredSize(new java.awt.Dimension(100, 35));
         btndvSua.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btndvSuaActionPerformed(evt);
@@ -1315,9 +1441,19 @@ public class QuanLyGUI extends javax.swing.JFrame {
 
         btndvXoa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/removeuser.png"))); // NOI18N
         btndvXoa.setText("Xóa");
+        btndvXoa.setPreferredSize(new java.awt.Dimension(100, 35));
         btndvXoa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btndvXoaActionPerformed(evt);
+            }
+        });
+
+        btndvRef.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/refresh.png"))); // NOI18N
+        btndvRef.setText("Refresh");
+        btndvRef.setPreferredSize(new java.awt.Dimension(100, 35));
+        btndvRef.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btndvRefActionPerformed(evt);
             }
         });
 
@@ -1330,32 +1466,36 @@ public class QuanLyGUI extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(pnldvForm, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(tabDichVuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btndvThem, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
-                    .addComponent(btndvSua, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btndvXoa, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(srldvData, javax.swing.GroupLayout.DEFAULT_SIZE, 706, Short.MAX_VALUE)
+                .addGroup(tabDichVuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(tabDichVuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(btndvThem, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btndvSua, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btndvXoa, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(btndvRef, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(39, 39, 39)
+                .addComponent(srldvData, javax.swing.GroupLayout.DEFAULT_SIZE, 757, Short.MAX_VALUE)
                 .addContainerGap())
         );
         tabDichVuLayout.setVerticalGroup(
             tabDichVuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(tabDichVuLayout.createSequentialGroup()
                 .addComponent(lbldvTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
                 .addGroup(tabDichVuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(tabDichVuLayout.createSequentialGroup()
-                        .addGap(193, 193, 193)
-                        .addComponent(btndvThem, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(103, 103, 103)
+                        .addComponent(btndvThem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(31, 31, 31)
-                        .addComponent(btndvSua, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btndvSua, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(32, 32, 32)
-                        .addComponent(btndvXoa, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btndvXoa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(26, 26, 26)
+                        .addComponent(btndvRef, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(tabDichVuLayout.createSequentialGroup()
-                        .addGroup(tabDichVuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(srldvData, javax.swing.GroupLayout.PREFERRED_SIZE, 448, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(pnldvForm, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(tabDichVuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(pnldvForm, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(srldvData))
                         .addContainerGap())))
         );
 
@@ -1378,119 +1518,178 @@ public class QuanLyGUI extends javax.swing.JFrame {
 
         lblhdFormNV.setText("Mã nhân viên");
 
-        lblhdFormGia.setText("Giá");
-
-        lblhdFormTitle.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        lblhdFormTitle.setForeground(new java.awt.Color(83, 58, 255));
-        lblhdFormTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblhdFormTitle.setText("Tìm kiếm");
-
         lblhdFormKH.setText("Mã khách hàng");
-
-        lblhdFormPhg.setText("Số phòng");
-
-        lblhdFormDV.setText("Mã dịch vụ");
 
         btnhdTim.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/find.png"))); // NOI18N
         btnhdTim.setText("Tìm");
+        btnhdTim.setPreferredSize(new java.awt.Dimension(100, 35));
         btnhdTim.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnhdTimActionPerformed(evt);
             }
         });
 
-        ckbhdFormNL.setSelected(true);
-        ckbhdFormNL.setText("Ngày lập");
+        lblhdFormTT1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        lblhdFormTT1.setForeground(new java.awt.Color(83, 58, 255));
+        lblhdFormTT1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblhdFormTT1.setText("Thông tin hóa đơn");
+
+        lblhdFormTT2.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        lblhdFormTT2.setForeground(new java.awt.Color(83, 58, 255));
+        lblhdFormTT2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblhdFormTT2.setText("Thông tin phiếu thuê phòng");
+
+        lblhdFormTT3.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        lblhdFormTT3.setForeground(new java.awt.Color(83, 58, 255));
+        lblhdFormTT3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblhdFormTT3.setText("Thông tin phiếu dịch vụ");
+
+        lblhdFormMPTP.setText("Mã phiếu thuê phòng");
+
+        lblhdFormMP.setText("Mã phòng");
+
+        lblhdFormMPDV.setText("Mã phiếu dịch vụ");
+
+        lblhdFormMDV.setText("Mã dịch vụ");
+
+        txthdFormMP.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txthdFormMPActionPerformed(evt);
+            }
+        });
+
+        btnhdTim1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/find.png"))); // NOI18N
+        btnhdTim1.setText("Tìm");
+        btnhdTim1.setPreferredSize(new java.awt.Dimension(100, 35));
+        btnhdTim1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnhdTim1ActionPerformed(evt);
+            }
+        });
+
+        btnhdTim2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/find.png"))); // NOI18N
+        btnhdTim2.setText("Tìm");
+        btnhdTim2.setPreferredSize(new java.awt.Dimension(100, 35));
+        btnhdTim2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnhdTim2ActionPerformed(evt);
+            }
+        });
+
+        btnhdRef.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/refresh.png"))); // NOI18N
+        btnhdRef.setText("Refresh");
+        btnhdRef.setPreferredSize(new java.awt.Dimension(100, 35));
+        btnhdRef.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnhdRefActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout pnlhdFormLayout = new javax.swing.GroupLayout(pnlhdForm);
         pnlhdForm.setLayout(pnlhdFormLayout);
         pnlhdFormLayout.setHorizontalGroup(
             pnlhdFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(lblhdFormTitle, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(lblhdFormTT1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(lblhdFormTT2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(lblhdFormTT3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(pnlhdFormLayout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(pnlhdFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnlhdFormLayout.createSequentialGroup()
                         .addGroup(pnlhdFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(pnlhdFormLayout.createSequentialGroup()
-                                .addContainerGap()
-                                .addGroup(pnlhdFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addGroup(pnlhdFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(lblhdFormKH)
-                                    .addGroup(pnlhdFormLayout.createSequentialGroup()
-                                        .addComponent(lblhdFormNV, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(18, 18, 18)
-                                        .addGroup(pnlhdFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(txthdFormKH)
-                                            .addComponent(txthdFormNV)))
-                                    .addGroup(pnlhdFormLayout.createSequentialGroup()
-                                        .addGroup(pnlhdFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(ckbhdFormNL, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(lblhdFormPhg, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGap(22, 22, 22)
-                                        .addGroup(pnlhdFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(dcrhdNgayLap1, javax.swing.GroupLayout.DEFAULT_SIZE, 147, Short.MAX_VALUE)
-                                            .addComponent(txthdFormGia2)
-                                            .addComponent(txthdFormPhg)))))
+                                    .addComponent(lblhdFormNV, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(pnlhdFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txthdFormNV, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txthdFormKH, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(btnhdTim, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(pnlhdFormLayout.createSequentialGroup()
-                                .addGap(97, 97, 97)
-                                .addComponent(btnhdTim, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(pnlhdFormLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(pnlhdFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(pnlhdFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lblhdFormMPTP)
+                                    .addComponent(lblhdFormMP))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(pnlhdFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txthdFormMP, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txthdFormMPTP, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(btnhdTim1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addContainerGap(24, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlhdFormLayout.createSequentialGroup()
+                        .addGroup(pnlhdFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(pnlhdFormLayout.createSequentialGroup()
-                                .addComponent(lblhdFormGia, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(pnlhdFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lblhdFormMPDV)
+                                    .addComponent(lblhdFormMDV))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(txthdFormGia1, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(pnlhdFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txthdFormMPDV, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txthdFormMDV, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(pnlhdFormLayout.createSequentialGroup()
-                                .addComponent(lblhdFormDV, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(txthdFormDV, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap())
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(btnhdTim2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(56, 56, 56)))
+                        .addGap(25, 25, 25))))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlhdFormLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(btnhdRef, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         pnlhdFormLayout.setVerticalGroup(
             pnlhdFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlhdFormLayout.createSequentialGroup()
-                .addGroup(pnlhdFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(pnlhdFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnlhdFormLayout.createSequentialGroup()
-                        .addComponent(lblhdFormTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(lblhdFormTT1)
+                        .addGap(43, 43, 43))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlhdFormLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
                         .addGroup(pnlhdFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(lblhdFormKH)
                             .addComponent(txthdFormKH, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(pnlhdFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblhdFormNV)
-                            .addComponent(txthdFormNV, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addComponent(dcrhdNgayLap1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(ckbhdFormNL))
+                        .addGap(23, 23, 23)))
+                .addGroup(pnlhdFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblhdFormNV)
+                    .addComponent(txthdFormNV, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnhdTim, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(lblhdFormTT2, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(pnlhdFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblhdFormMPTP)
+                    .addComponent(txthdFormMPTP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(pnlhdFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblhdFormGia)
-                    .addComponent(txthdFormGia1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(txthdFormGia2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                    .addComponent(txthdFormMP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblhdFormMP))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnhdTim1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(lblhdFormTT3, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(pnlhdFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txthdFormPhg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblhdFormPhg))
-                .addGap(18, 18, 18)
+                    .addComponent(lblhdFormMPDV)
+                    .addComponent(txthdFormMPDV, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(19, 19, 19)
                 .addGroup(pnlhdFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblhdFormDV)
-                    .addComponent(txthdFormDV, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(82, 82, 82)
-                .addComponent(btnhdTim, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(123, Short.MAX_VALUE))
+                    .addComponent(lblhdFormMDV)
+                    .addComponent(txthdFormMDV, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(btnhdTim2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
+                .addComponent(btnhdRef, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         tblhdData.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {},
-                {},
-                {},
-                {}
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
             },
             new String [] {
-
+                "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
         tblhdData.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -1498,33 +1697,33 @@ public class QuanLyGUI extends javax.swing.JFrame {
                 tblhdDataMouseClicked(evt);
             }
         });
-        srlhdData.setViewportView(tblhdData);
+        jScrollPane1.setViewportView(tblhdData);
 
-        tblhdData1.setModel(new javax.swing.table.DefaultTableModel(
+        tblptpData.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {},
-                {},
-                {},
-                {}
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
             },
             new String [] {
-
+                "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        srlhdData1.setViewportView(tblhdData1);
+        jScrollPane2.setViewportView(tblptpData);
 
-        tblhdData2.setModel(new javax.swing.table.DefaultTableModel(
+        tblpdvData.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {},
-                {},
-                {},
-                {}
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
             },
             new String [] {
-
+                "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        srlhdData2.setViewportView(tblhdData2);
+        jScrollPane3.setViewportView(tblpdvData);
 
         javax.swing.GroupLayout tabHoaDonLayout = new javax.swing.GroupLayout(tabHoaDon);
         tabHoaDon.setLayout(tabHoaDonLayout);
@@ -1537,26 +1736,26 @@ public class QuanLyGUI extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(tabHoaDonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(tabHoaDonLayout.createSequentialGroup()
-                        .addComponent(srlhdData2, javax.swing.GroupLayout.PREFERRED_SIZE, 456, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(srlhdData1, javax.swing.GroupLayout.DEFAULT_SIZE, 367, Short.MAX_VALUE))
-                    .addComponent(srlhdData))
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane1))
                 .addContainerGap())
         );
         tabHoaDonLayout.setVerticalGroup(
             tabHoaDonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(tabHoaDonLayout.createSequentialGroup()
                 .addComponent(lblhdTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(tabHoaDonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(pnlhdForm, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(tabHoaDonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(tabHoaDonLayout.createSequentialGroup()
-                        .addComponent(srlhdData, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(tabHoaDonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(srlhdData1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                            .addComponent(srlhdData2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))))
-                .addContainerGap())
+                        .addGroup(tabHoaDonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 306, Short.MAX_VALUE)
+                            .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)))
+                    .addComponent(pnlhdForm, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         tabquanly.addTab("Hóa đơn", tabHoaDon);
@@ -1582,17 +1781,17 @@ public class QuanLyGUI extends javax.swing.JFrame {
         tabThuNhap.setLayout(tabThuNhapLayout);
         tabThuNhapLayout.setHorizontalGroup(
             tabThuNhapLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, tabThuNhapLayout.createSequentialGroup()
-                .addContainerGap(343, Short.MAX_VALUE)
+            .addGroup(tabThuNhapLayout.createSequentialGroup()
+                .addGap(279, 279, 279)
                 .addComponent(chrtkTN, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(276, 276, 276))
+                .addContainerGap(418, Short.MAX_VALUE))
         );
         tabThuNhapLayout.setVerticalGroup(
             tabThuNhapLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(tabThuNhapLayout.createSequentialGroup()
-                .addGap(35, 35, 35)
+                .addGap(50, 50, 50)
                 .addComponent(chrtkTN, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(146, Short.MAX_VALUE))
+                .addContainerGap(168, Short.MAX_VALUE))
         );
 
         tabThongKeCon.addTab("Thu nhập", tabThuNhap);
@@ -1617,17 +1816,17 @@ public class QuanLyGUI extends javax.swing.JFrame {
         tabTanSuatDV.setLayout(tabTanSuatDVLayout);
         tabTanSuatDVLayout.setHorizontalGroup(
             tabTanSuatDVLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, tabTanSuatDVLayout.createSequentialGroup()
-                .addContainerGap(320, Short.MAX_VALUE)
+            .addGroup(tabTanSuatDVLayout.createSequentialGroup()
+                .addGap(250, 250, 250)
                 .addComponent(chrtkDV, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(299, 299, 299))
+                .addContainerGap(447, Short.MAX_VALUE))
         );
         tabTanSuatDVLayout.setVerticalGroup(
             tabTanSuatDVLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(tabTanSuatDVLayout.createSequentialGroup()
                 .addGap(73, 73, 73)
                 .addComponent(chrtkDV, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(108, Short.MAX_VALUE))
+                .addContainerGap(145, Short.MAX_VALUE))
         );
 
         tabThongKeCon.addTab("Tần suất dùng dịch vụ", tabTanSuatDV);
@@ -1653,16 +1852,16 @@ public class QuanLyGUI extends javax.swing.JFrame {
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(289, 289, 289)
+                .addGap(291, 291, 291)
                 .addComponent(chrtkDS, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(330, Short.MAX_VALUE))
+                .addContainerGap(406, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                .addContainerGap(94, Short.MAX_VALUE)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGap(52, 52, 52)
                 .addComponent(chrtkDS, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(87, 87, 87))
+                .addContainerGap(166, Short.MAX_VALUE))
         );
 
         tabThongKeCon.addTab("Doanh số", jPanel4);
@@ -1684,15 +1883,15 @@ public class QuanLyGUI extends javax.swing.JFrame {
         pnlMain.setLayout(pnlMainLayout);
         pnlMainLayout.setHorizontalGroup(
             pnlMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(tabquanly, javax.swing.GroupLayout.DEFAULT_SIZE, 1189, Short.MAX_VALUE)
-            .addComponent(pnlTitle, javax.swing.GroupLayout.DEFAULT_SIZE, 1187, Short.MAX_VALUE)
+            .addComponent(tabquanly, javax.swing.GroupLayout.DEFAULT_SIZE, 1267, Short.MAX_VALUE)
+            .addComponent(pnlTitle, javax.swing.GroupLayout.DEFAULT_SIZE, 1267, Short.MAX_VALUE)
         );
         pnlMainLayout.setVerticalGroup(
             pnlMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlMainLayout.createSequentialGroup()
                 .addComponent(pnlTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(tabquanly, javax.swing.GroupLayout.DEFAULT_SIZE, 599, Short.MAX_VALUE))
+                .addComponent(tabquanly, javax.swing.GroupLayout.DEFAULT_SIZE, 641, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -1712,418 +1911,536 @@ public class QuanLyGUI extends javax.swing.JFrame {
 
     private void btnLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogoutActionPerformed
 
-		AutomaticallyClosedMsgBox(2000, "Đang đăng xuất.\nXin hãy đợi...");
+        AutomaticallyClosedMsgBox(2000, "Đang đăng xuất.\nXin hãy đợi...");
         this.dispose();
         DangNhapGUI dn = new DangNhapGUI("Quản lý khách sạn");
-        dn.showWindow();        
+        dn.showWindow();
     }//GEN-LAST:event_btnLogoutActionPerformed
 
     private void btnkhSuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnkhSuaActionPerformed
-		if (txtkhFormHo.getText().isEmpty() || txtkhFormHo.getText().length() > 28)
-			ThongBao.error("họ không hợp lệ");
-		else if (txtkhFormTen.getText().isEmpty() ||txtkhFormTen.getText().length() > 7)
-			ThongBao.error("tên không hợp lệ");
-		else if (cbbkhFormGioiTinh.getSelectedItem() == null)
-			ThongBao.error("Chưa chọn giới tính");
-		else if (!RegexExpression.checkPhoneNumber(txtkhFormSDT.getText()))
-			ThongBao.error("Số đt không hợp lệ");
-		else if (!RegexExpression.isValidemail(txtkhFormEmail.getText()))
-			ThongBao.error("email không hợp lệ");
-		else if (!RegexExpression.checkcmnd(txtkhFormCMND.getText()))
-			ThongBao.error("CMND không hợp lệ");
-		else if (txtkhFormQuocTich.getText().isEmpty())
-			ThongBao.error("Chưa điền quốc tịch");
-		else {
-			int makh = Integer.valueOf(txtkhFormMa.getText());
-			int gt = cbbkhFormGioiTinh.getSelectedIndex();
-			String ho = txtkhFormHo.getText();
-			String ten = txtkhFormTen.getText();
-			SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
-			String ngaysinh = formatter.format(dcrkhFormNgaySinh.getDate());
-			int sdt = Integer.valueOf(txtkhFormSDT.getText());
-			String email = txtkhFormEmail.getText();
-			int cmnn = Integer.valueOf(txtkhFormCMND.getText());
-			String qt = txtkhFormCMND.getText();
-			
-			BUS.KhachHangBUS.edit(makh,ho, ten, gt, ngaysinh, sdt, email, cmnn, qt);
-			try {
-				AutomaticallyClosedMsgBox(1500, "Đang sửa.\nXin hãy đợi....");
-				JOptionPane.showMessageDialog(null, "sửa thành công.", "Information", JOptionPane.INFORMATION_MESSAGE);
-				BUS.KhachHangBUS.HienThongkh(tblkhData);
-			} catch (Exception ex) {
-				Logger.getLogger(LeTanGUI.class.getName()).log(Level.SEVERE, null, ex);
-			}
-		}
+        if (txtkhFormHo.getText().isEmpty() || txtkhFormHo.getText().length() > 28) {
+            ThongBao.error("họ không hợp lệ");
+        } else if (txtkhFormTen.getText().isEmpty() || txtkhFormTen.getText().length() > 7) {
+            ThongBao.error("tên không hợp lệ");
+        } else if (cbbkhFormGioiTinh.getSelectedItem() == null) {
+            ThongBao.error("Chưa chọn giới tính");
+        } else if (!RegexExpression.checkPhoneNumber(txtkhFormSDT.getText())) {
+            ThongBao.error("Số đt không hợp lệ");
+        } else if (!RegexExpression.isValidemail(txtkhFormEmail.getText())) {
+            ThongBao.error("email không hợp lệ");
+        } else if (!RegexExpression.checkcmnd(txtkhFormCMND.getText())) {
+            ThongBao.error("CMND không hợp lệ");
+        } else if (txtkhFormQuocTich.getText().isEmpty()) {
+            ThongBao.error("Chưa điền quốc tịch");
+        } else {
+            int makh = Integer.valueOf(txtkhFormMa.getText());
+            int gt = cbbkhFormGioiTinh.getSelectedIndex();
+            String ho = txtkhFormHo.getText();
+            String ten = txtkhFormTen.getText();
+            SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
+            String ngaysinh = formatter.format(dcrkhFormNgaySinh.getDate());
+            int sdt = Integer.valueOf(txtkhFormSDT.getText());
+            String email = txtkhFormEmail.getText();
+            int cmnn = Integer.valueOf(txtkhFormCMND.getText());
+            String qt = txtkhFormCMND.getText();
+            BUS.KhachHangBUS khBUS = new BUS.KhachHangBUS();
+            khBUS.edit(makh, ho, ten, gt, ngaysinh, sdt, email, cmnn, qt);
+            try {
+                AutomaticallyClosedMsgBox(1500, "Đang sửa.\nXin hãy đợi....");
+                ThongBao.noitice("sửa thành công");
+                khBUS.updateTable(tblkhData);
+            } catch (Exception ex) {
+                Logger.getLogger(LeTanGUI.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
     }//GEN-LAST:event_btnkhSuaActionPerformed
 
     private void btnkhThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnkhThemActionPerformed
-		if (txtkhFormHo.getText().isEmpty() || txtkhFormHo.getText().length() > 28)
-			ThongBao.error("họ không hợp lệ");
-		else if (txtkhFormTen.getText().isEmpty() ||txtkhFormTen.getText().length() > 7)
-			ThongBao.error("tên không hợp lệ");
-		else if (cbbkhFormGioiTinh.getSelectedItem() == null)
-			ThongBao.error("Chưa chọn giới tính");
-		else if (!RegexExpression.checkPhoneNumber(txtkhFormSDT.getText()))
-			ThongBao.error("Số đt không hợp lệ");
-		else if (!RegexExpression.isValidemail(txtkhFormEmail.getText()))
-			ThongBao.error("email không hợp lệ");
-		else if (!RegexExpression.checkcmnd(txtkhFormCMND.getText()))
-			ThongBao.error("CMND không hợp lệ");
-		else if (txtkhFormQuocTich.getText().isEmpty())
-			ThongBao.error("Chưa điền quốc tịch");
-		else
-		{
-			int gt = cbbkhFormGioiTinh.getSelectedIndex();
-			String ho = txtkhFormHo.getText();
-			String ten = txtkhFormTen.getText();
-			SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
-			String ngaysinh = formatter.format(dcrkhFormNgaySinh.getDate());
-			int sdt = Integer.valueOf(txtkhFormSDT.getText());
-			String email = txtkhFormEmail.getText();
-			int cmnn = Integer.valueOf(txtkhFormCMND.getText());
-			String qt = txtkhFormQuocTich.getText();
-			
-			BUS.KhachHangBUS.add(ho, ten, gt, ngaysinh, sdt, email, cmnn, qt);
-			
-			try {
-				AutomaticallyClosedMsgBox(1500, "Đang thêm.\nXin hãy đợi....");
-				ThongBao.noitice("Thêm thành công");
-				BUS.KhachHangBUS.HienThongkh(tblkhData);
-
-			} catch (Exception ex) {
-
-				Logger.getLogger(LeTanGUI.class.getName()).log(Level.SEVERE, null, ex);
-			}
-		}
+        if (txtkhFormHo.getText().isEmpty() || txtkhFormHo.getText().length() > 28) {
+            ThongBao.error("họ không hợp lệ");
+        } else if (txtkhFormTen.getText().isEmpty() || txtkhFormTen.getText().length() > 7) {
+            ThongBao.error("tên không hợp lệ");
+        } else if (cbbkhFormGioiTinh.getSelectedItem() == null) {
+            ThongBao.error("Chưa chọn giới tính");
+        } else if (!RegexExpression.checkPhoneNumber(txtkhFormSDT.getText())) {
+            ThongBao.error("Số đt không hợp lệ");
+        } else if (!RegexExpression.isValidemail(txtkhFormEmail.getText())) {
+            ThongBao.error("email không hợp lệ");
+        } else if (!RegexExpression.checkcmnd(txtkhFormCMND.getText())) {
+            ThongBao.error("CMND không hợp lệ");
+        } else if (txtkhFormQuocTich.getText().isEmpty()) {
+            ThongBao.error("Chưa điền quốc tịch");
+        } else {
+            int gt = cbbkhFormGioiTinh.getSelectedIndex();
+            String ho = txtkhFormHo.getText();
+            String ten = txtkhFormTen.getText();
+            SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
+            String ngaysinh = formatter.format(dcrkhFormNgaySinh.getDate());
+            int sdt = Integer.valueOf(txtkhFormSDT.getText());
+            String email = txtkhFormEmail.getText();
+            int cmnn = Integer.valueOf(txtkhFormCMND.getText());
+            String qt = txtkhFormQuocTich.getText();
+            BUS.KhachHangBUS khBUS = new BUS.KhachHangBUS();
+            khBUS.add(ho, ten, gt, ngaysinh, sdt, email, cmnn, qt);
+            try {
+                AutomaticallyClosedMsgBox(1500, "Đang thêm.\nXin hãy đợi....");
+                ThongBao.noitice("sửa thành công");
+                khBUS.updateTable(tblkhData);
+            } catch (Exception ex) {
+                Logger.getLogger(LeTanGUI.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
     }//GEN-LAST:event_btnkhThemActionPerformed
 
     private void btnnvThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnnvThemActionPerformed
-		if (txtnvFormHo.getText().isEmpty() || txtnvFormHo.getText().length() > 28)
-			ThongBao.error("họ không hợp lệ");
-		else if (txtnvFormTen.getText().isEmpty() ||txtnvFormTen.getText().length() > 7)
-			ThongBao.error("tên không hợp lệ");
-		else if (cbbnvFormGioiTinh.getSelectedItem() == null)
-			ThongBao.error("Chưa chọn giới tính");
-		else if (!RegexExpression.checkPhoneNumber(txtnvFormSDT.getText()))
-			ThongBao.error("Số đt không hợp lệ");
-		else if (!RegexExpression.isValidemail(txtnvFormEmail.getText()))
-			ThongBao.error("email không hợp lệ");
-		else if (txtnvFormChucVu.getText().isEmpty())
-			ThongBao.error("Chức vụ không hợp lệ");
-		else if (txtnvFormLuong.getText().isEmpty())
-			ThongBao.error("Chưa điền Lương");
-		else
-		{
-			int gt = cbbnvFormGioiTinh.getSelectedIndex();
-			String ho = txtnvFormHo.getText();
-			String ten = txtnvFormTen.getText();
-			SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
-			String ngaysinh = formatter.format(dcrnvFormNgaySinh.getDate());
-			
-			int sdt = 0;
-			if (!txtnvFormSDT.getText().isEmpty())
-				sdt = Integer.valueOf(txtnvFormSDT.getText());
-			
-			String email = txtnvFormEmail.getText();
-			String ngayvao = formatter.format(dcrnvFormNgayVao.getDate());
-			String chucvu = txtnvFormChucVu.getText();
-			
-			int luong = 0;
-			if (!txtnvFormLuong.getText().isEmpty())
-				luong = Integer.valueOf(txtnvFormLuong.getText());
-			
-			BUS.NhanVienBUS nvBUS = new BUS.NhanVienBUS();
-			
-			nvBUS.add(ho, ten, gt, ngaysinh, sdt, email, ngayvao, chucvu, luong);
-			
-			try {
-				AutomaticallyClosedMsgBox(1500, "Đang thêm.\nXin hãy đợi....");
-				ThongBao.noitice("Thêm thành công");
-				nvBUS.updateTable(tblnvData);
-			} catch (Exception ex) {
-				Logger.getLogger(LeTanGUI.class.getName()).log(Level.SEVERE, null, ex);
-			}
-		}
+        if (txtnvFormHo.getText().isEmpty() || txtnvFormHo.getText().length() > 28) {
+            ThongBao.error("họ không hợp lệ");
+        } else if (txtnvFormTen.getText().isEmpty() || txtnvFormTen.getText().length() > 7) {
+            ThongBao.error("tên không hợp lệ");
+        } else if (cbbnvFormGioiTinh.getSelectedItem() == null) {
+            ThongBao.error("Chưa chọn giới tính");
+        } else if (!RegexExpression.checkPhoneNumber(txtnvFormSDT.getText())) {
+            ThongBao.error("Số đt không hợp lệ");
+        } else if (!RegexExpression.isValidemail(txtnvFormEmail.getText())) {
+            ThongBao.error("email không hợp lệ");
+        } else if (txtnvFormChucVu.getText().isEmpty()) {
+            ThongBao.error("Chức vụ không hợp lệ");
+        } else if (txtnvFormLuong.getText().isEmpty()) {
+            ThongBao.error("Chưa điền Lương");
+        } else {
+            int gt = cbbnvFormGioiTinh.getSelectedIndex();
+            String ho = txtnvFormHo.getText();
+            String ten = txtnvFormTen.getText();
+            SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
+            String ngaysinh = formatter.format(dcrnvFormNgaySinh.getDate());
+
+            int sdt = 0;
+            if (!txtnvFormSDT.getText().isEmpty()) {
+                sdt = Integer.valueOf(txtnvFormSDT.getText());
+            }
+
+            String email = txtnvFormEmail.getText();
+            String ngayvao = formatter.format(dcrnvFormNgayVao.getDate());
+            String chucvu = txtnvFormChucVu.getText();
+
+            int luong = 0;
+            if (!txtnvFormLuong.getText().isEmpty()) {
+                luong = Integer.valueOf(txtnvFormLuong.getText());
+            }
+
+            BUS.NhanVienBUS nvBUS = new BUS.NhanVienBUS();
+
+            nvBUS.add(ho, ten, gt, ngaysinh, sdt, email, ngayvao, chucvu, luong);
+
+            try {
+                AutomaticallyClosedMsgBox(1500, "Đang thêm.\nXin hãy đợi....");
+                ThongBao.noitice("Thêm thành công");
+                nvBUS.updateTable(tblnvData);
+            } catch (Exception ex) {
+                Logger.getLogger(LeTanGUI.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
     }//GEN-LAST:event_btnnvThemActionPerformed
 
     private void btnnvSuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnnvSuaActionPerformed
-		if (txtnvFormHo.getText().isEmpty() || txtnvFormHo.getText().length() > 28)
-			ThongBao.error("họ không hợp lệ");
-		else if (txtnvFormTen.getText().isEmpty() ||txtnvFormTen.getText().length() > 7)
-			ThongBao.error("tên không hợp lệ");
-		else if (cbbnvFormGioiTinh.getSelectedItem() == null)
-			ThongBao.error("Chưa chọn giới tính");
-		else if (!RegexExpression.checkPhoneNumber(txtnvFormSDT.getText()))
-			ThongBao.error("Số đt không hợp lệ");
-		else if (!RegexExpression.isValidemail(txtnvFormEmail.getText()))
-			ThongBao.error("email không hợp lệ");
-		else if (txtnvFormChucVu.getText().isEmpty())
-			ThongBao.error("Chưa nhập chức vụ");
-		else if (txtnvFormLuong.getText().isEmpty())
-			ThongBao.error("Chưa nhập lương");
-		else {
-			int manv = Integer.valueOf(txtnvFormMa.getText());
-			int gt = cbbnvFormGioiTinh.getSelectedIndex();
-			String ho = txtnvFormHo.getText();
-			String ten = txtnvFormTen.getText();
-			SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
-			String ngaysinh = formatter.format(dcrnvFormNgaySinh.getDate());
-			int sdt = Integer.valueOf(txtnvFormSDT.getText());
-			String email = txtnvFormEmail.getText();
-			String ngayvao = formatter.format(dcrnvFormNgayVao.getDate());
-			String chucvu = txtnvFormChucVu.getText();
-			int luong = Integer.valueOf(txtnvFormLuong.getText());
-			
-			BUS.NhanVienBUS nvBUS = new BUS.NhanVienBUS();
-			
-			nvBUS.edit(manv,ho, ten, gt, ngaysinh, sdt, email, ngayvao, chucvu, luong);
-			try {
-				AutomaticallyClosedMsgBox(1500, "Đang sửa.\nXin hãy đợi....");
-				ThongBao.noitice("sửa thành công");
-				nvBUS.updateTable(tblnvData);
-			} catch (Exception ex) {
-				Logger.getLogger(LeTanGUI.class.getName()).log(Level.SEVERE, null, ex);
-			}
-		}
+        if (txtnvFormHo.getText().isEmpty() || txtnvFormHo.getText().length() > 28) {
+            ThongBao.error("họ không hợp lệ");
+        } else if (txtnvFormTen.getText().isEmpty() || txtnvFormTen.getText().length() > 7) {
+            ThongBao.error("tên không hợp lệ");
+        } else if (cbbnvFormGioiTinh.getSelectedItem() == null) {
+            ThongBao.error("Chưa chọn giới tính");
+        } else if (!RegexExpression.checkPhoneNumber(txtnvFormSDT.getText())) {
+            ThongBao.error("Số đt không hợp lệ");
+        } else if (!RegexExpression.isValidemail(txtnvFormEmail.getText())) {
+            ThongBao.error("email không hợp lệ");
+        } else if (txtnvFormChucVu.getText().isEmpty()) {
+            ThongBao.error("Chưa nhập chức vụ");
+        } else if (txtnvFormLuong.getText().isEmpty()) {
+            ThongBao.error("Chưa nhập lương");
+        } else {
+            int manv = Integer.valueOf(txtnvFormMa.getText());
+            int gt = cbbnvFormGioiTinh.getSelectedIndex();
+            String ho = txtnvFormHo.getText();
+            String ten = txtnvFormTen.getText();
+            SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
+            String ngaysinh = formatter.format(dcrnvFormNgaySinh.getDate());
+            int sdt = Integer.valueOf(txtnvFormSDT.getText());
+            String email = txtnvFormEmail.getText();
+            String ngayvao = formatter.format(dcrnvFormNgayVao.getDate());
+            String chucvu = txtnvFormChucVu.getText();
+            int luong = Integer.valueOf(txtnvFormLuong.getText());
+
+            BUS.NhanVienBUS nvBUS = new BUS.NhanVienBUS();
+
+            nvBUS.edit(manv, ho, ten, gt, ngaysinh, sdt, email, ngayvao, chucvu, luong);
+            try {
+                AutomaticallyClosedMsgBox(1500, "Đang sửa.\nXin hãy đợi....");
+                ThongBao.noitice("sửa thành công");
+                nvBUS.updateTable(tblnvData);
+            } catch (Exception ex) {
+                Logger.getLogger(LeTanGUI.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
     }//GEN-LAST:event_btnnvSuaActionPerformed
 
     private void btntkThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btntkThemActionPerformed
-		BUS.TaiKhoanBUS.add(txttkFormTen, txttkFormMatKhau, ckbtkQuyen, txttkFormMaNV);
+        BUS.TaiKhoanBUS tkBUS = new BUS.TaiKhoanBUS();
+        tkBUS.add(txttkFormTen, txttkFormMatKhau, ckbtkQuyen, txttkFormMaNV);
+        try {
+            AutomaticallyClosedMsgBox(1500, "Đang thêm.\nXin hãy đợi....");
+            ThongBao.noitice("thêm thành công");
+            tkBUS.updateTable(tbltkData);
+        } catch (Exception ex) {
+            Logger.getLogger(LeTanGUI.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_btntkThemActionPerformed
 
     private void btntkSuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btntkSuaActionPerformed
-		BUS.TaiKhoanBUS.edit(txttkFormTen, txttkFormMatKhau, ckbtkQuyen, txttkFormMaNV);
+
+        BUS.TaiKhoanBUS tkBUS = new BUS.TaiKhoanBUS();
+        BUS.TaiKhoanBUS.edit(txttkFormTen, txttkFormMatKhau, ckbtkQuyen, txttkFormMaNV);
+        try {
+            AutomaticallyClosedMsgBox(1500, "Đang sửa.\nXin hãy đợi....");
+            ThongBao.noitice("sửa thành công");
+            tkBUS.updateTable(tblnvData);
+        } catch (Exception ex) {
+            Logger.getLogger(LeTanGUI.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_btntkSuaActionPerformed
 
     private void btnpThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnpThemActionPerformed
-		try {
-			AutomaticallyClosedMsgBox(1500, "Đang thêm.\nXin hãy đợi....");
-			if (BUS.PhongBUS.addphong(tblpData, tblpDatal, txtpFormSoPhg, txtpFormTinhTrang))
-			{
-				ThongBao.noitice("Thêm thành công");
-				PhongBUS.updateTablebyTang(tblpData, -1);
-			}
-		} catch (Exception ex) {
-			Logger.getLogger(LeTanGUI.class.getName()).log(Level.SEVERE, null, ex);
-		}
+        try {
+            AutomaticallyClosedMsgBox(1500, "Đang thêm.\nXin hãy đợi....");
+            if (BUS.PhongBUS.addphong(tblpData, tblpDatal, txtpFormSoPhg, txtpFormTinhTrang)) {
+                ThongBao.noitice("Thêm thành công");
+                PhongBUS.updateTablebyTang(tblpData, -1);
+            }
+        } catch (Exception ex) {
+            Logger.getLogger(LeTanGUI.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_btnpThemActionPerformed
 
     private void btnpSuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnpSuaActionPerformed
-		try {
-			AutomaticallyClosedMsgBox(1500, "Đang sửa.\nXin hãy đợi....");
-			if (BUS.PhongBUS.editphong(tblpData, tblpDatal, txtpFormSoPhg, txtpFormTinhTrang))
-			{
-				ThongBao.noitice("Sửa thành công");
-				PhongBUS.updateTablebyTang(tblpData, -1);
-			}
-		} catch (Exception ex) {
-			Logger.getLogger(LeTanGUI.class.getName()).log(Level.SEVERE, null, ex);
-		}
+        try {
+            AutomaticallyClosedMsgBox(1500, "Đang sửa.\nXin hãy đợi....");
+            if (BUS.PhongBUS.editphong(tblpData, tblpDatal, txtpFormSoPhg, txtpFormTinhTrang)) {
+                ThongBao.noitice("Sửa thành công");
+                PhongBUS.updateTablebyTang(tblpData, -1);
+            }
+        } catch (Exception ex) {
+            Logger.getLogger(LeTanGUI.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_btnpSuaActionPerformed
 
     private void btndvThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btndvThemActionPerformed
-		BUS.DichVuBUS.add(tbldvData, txtdvFormTen, txtdvFormGia, taadvFormMoTa);
+        BUS.DichVuBUS.add(tbldvData, txtdvFormTen, txtdvFormGia, taadvFormMoTa);
+        BUS.DichVuBUS.updateTable(tbldvData);
     }//GEN-LAST:event_btndvThemActionPerformed
 
     private void btndvSuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btndvSuaActionPerformed
-		BUS.DichVuBUS.edit(tbldvData, txtdvFormMa, txtdvFormTen, txtdvFormGia, taadvFormMoTa);
+        BUS.DichVuBUS.edit(tbldvData, txtdvFormMa, txtdvFormTen, txtdvFormGia, taadvFormMoTa);
+        BUS.DichVuBUS.updateTable(tbldvData);
     }//GEN-LAST:event_btndvSuaActionPerformed
 
     private void btndvXoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btndvXoaActionPerformed
-		BUS.DichVuBUS.delete(tbldvData);
+        BUS.DichVuBUS.delete(tbldvData);
+        BUS.DichVuBUS.updateTable(tbldvData);
     }//GEN-LAST:event_btndvXoaActionPerformed
 
     private void btnkhTimActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnkhTimActionPerformed
-		String ho = txtkhFormHo.getText();
-		String ten = txtkhFormTen.getText();
-		int gioitinh = cbbkhFormGioiTinh.getSelectedIndex();
-		Date ngaysinh = dcrkhFormNgaySinh.getDate();
-		
-		int sdt = 0;
-		if(!txtkhFormSDT.getText().isEmpty())
-			sdt = Integer.parseInt(txtkhFormSDT.getText());
-		
-		String email = txtkhFormEmail.getText();
-		
-		int cmnd = 0;
-		if(!txtkhFormSDT.getText().isEmpty())
-			cmnd = Integer.parseInt(txtkhFormCMND.getText());
-		
-		String quoctich = txtkhFormQuocTich.getText();
+        String ho = txtkhFormHo.getText();
+        String ten = txtkhFormTen.getText();
+        int gioitinh = cbbkhFormGioiTinh.getSelectedIndex();
+        Date ngaysinh = dcrkhFormNgaySinh.getDate();
 
-		BUS.KhachHangBUS khBUS = new BUS.KhachHangBUS();
-		ArrayList<DTO.KhachHang> l_khtim = new ArrayList<DTO.KhachHang>();
+        int sdt;
+        if (!txtkhFormSDT.getText().isEmpty()) {
+            sdt = Integer.parseInt(txtkhFormSDT.getText());
+        } else {
+            sdt = 0;
+        }
+        String email = txtkhFormEmail.getText();
+        int cmnd;
+        if (txtkhFormCMND.getText().isEmpty()) {
+            cmnd = 0;
+        } else {
+            //(!txtkhFormSDT.getText().isEmpty()){
+            cmnd = Integer.parseInt(txtkhFormCMND.getText());
+        }
+        String quoctich = txtkhFormQuocTich.getText();
 
-		if(sdt != 0 || !email.isEmpty() || cmnd != 0)
-			l_khtim.add(khBUS.find_unique(sdt, cmnd, email));
-		else
-			l_khtim = khBUS.find(ho, ten, gioitinh, quoctich);
+        BUS.KhachHangBUS khBUS = new BUS.KhachHangBUS();
+        ArrayList<DTO.KhachHang> l_khtim = new ArrayList<DTO.KhachHang>();
 
-		BUS.KhachHangBUS.LoadTable(tblkhData, l_khtim);
+        if (sdt != 0 || cmnd != 0) {
+            l_khtim.add(khBUS.find_unique(sdt, cmnd));
+        } else {
+            l_khtim = khBUS.find(ho, ten);
+        }
+
+        khBUS.uploadTable(tblkhData, l_khtim);
     }//GEN-LAST:event_btnkhTimActionPerformed
 
     private void btnnvTimActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnnvTimActionPerformed
-		String ho = txtnvFormHo.getText();
-		String ten = txtnvFormTen.getText();
-		int gioitinh = cbbnvFormGioiTinh.getSelectedIndex();
-		Date ngaysinh = dcrnvFormNgaySinh.getDate();
-		
-		int sdt = 0;
-		if (!txtnvFormSDT.getText().isEmpty())
-			sdt = Integer.valueOf(txtnvFormSDT.getText());
-		
-		String email = txtnvFormEmail.getText();
+        String ho = txtnvFormHo.getText();
+        String ten = txtnvFormTen.getText();
+        int gioitinh = cbbnvFormGioiTinh.getSelectedIndex();
+        Date ngaysinh = dcrnvFormNgaySinh.getDate();
+
+        int sdt = 0;
+        if (!txtnvFormSDT.getText().isEmpty()) {
+            sdt = Integer.valueOf(txtnvFormSDT.getText());
+        }
+
+        String email = txtnvFormEmail.getText();
 //		Date ngayvao = dcrnvNgayVao.getDate();
-		String chucvu = txtnvFormChucVu.getText();
-		
-		int luong = 0;
-		if (!txtnvFormSDT.getText().isEmpty())
-			luong = Integer.valueOf(txtnvFormLuong.getText());
+        String chucvu = txtnvFormChucVu.getText();
 
-		BUS.NhanVienBUS nvBUS = new BUS.NhanVienBUS();
-		ArrayList<DTO.NhanVien> l_nvtim = new ArrayList<>();
+        int luong = 0;
+        if (!txtnvFormSDT.getText().isEmpty()) {
+            luong = Integer.valueOf(txtnvFormLuong.getText());
+        }
 
-		if(sdt != 0 || !email.isEmpty())
-			l_nvtim.add(nvBUS.find_unique(sdt, email));
-		else
-			l_nvtim = nvBUS.find(ho, ten, gioitinh, chucvu, luong);
+        BUS.NhanVienBUS nvBUS = new BUS.NhanVienBUS();
+        ArrayList<DTO.NhanVien> l_nvtim = new ArrayList<>();
 
-		nvBUS.uploadTable(tblnvData, l_nvtim);
+        if (!ho.isEmpty() || !ten.isEmpty()) {
+            l_nvtim = nvBUS.find(ho, ten);
+        }
+        nvBUS.uploadTable(tblnvData, l_nvtim);
     }//GEN-LAST:event_btnnvTimActionPerformed
 
     private void btntkTimActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btntkTimActionPerformed
-		String tentk = txttkFormTen.getText();
-		
-		String honv = txttkFormHo.getText();
-		String tennv = txttkFormTennv.getText();
-		
-		int sdt = 0;
-		if (!txttkFormSDT.getText().isEmpty())
-			sdt = Integer.valueOf(txttkFormSDT.getText());
-		
-		String email = txttkFormEmail.getText();
-		String chucvu = txttkFormChucVu.getText();
-		
-		BUS.TaiKhoanBUS tkBUS = new BUS.TaiKhoanBUS();
-		ArrayList<DTO.TaiKhoan> l_tktim;
+        String tentk = txttkFormTen.getText();
 
-		if (!tentk.isEmpty())
-		{
-			l_tktim = new ArrayList<>();
-			DTO.TaiKhoan tk = tkBUS.find_unique(tentk);
-			if (tk != null)
-				l_tktim.add(tk);
-		}
-		else if (!honv.isEmpty() || !tennv.isEmpty() || sdt != 0 || !email.isEmpty() || !chucvu.isEmpty())
-			l_tktim = tkBUS.find(honv, tennv, sdt, email, chucvu);
-		else
-			l_tktim = tkBUS.getList();
+        String honv = txttkFormHo.getText();
+        String tennv = txttkFormTennv.getText();
 
-		tkBUS.uploadTable(tbltkData, l_tktim);
+        int sdt = 0;
+        if (!txttkFormSDT.getText().isEmpty()) {
+            sdt = Integer.valueOf(txttkFormSDT.getText());
+        }
+
+        String email = txttkFormEmail.getText();
+        String chucvu = txttkFormChucVu.getText();
+
+        BUS.TaiKhoanBUS tkBUS = new BUS.TaiKhoanBUS();
+        ArrayList<DTO.TaiKhoan> l_tktim;
+
+        if (!tentk.isEmpty()) {
+            l_tktim = new ArrayList<>();
+            DTO.TaiKhoan tk = tkBUS.find_unique(tentk);
+            if (tk != null) {
+                l_tktim.add(tk);
+            }
+        } else if (!honv.isEmpty() || !tennv.isEmpty() || sdt != 0 || !email.isEmpty() || !chucvu.isEmpty()) {
+            l_tktim = tkBUS.find(honv, tennv, sdt, email, chucvu);
+        } else {
+            l_tktim = tkBUS.getList();
+        }
+
+        tkBUS.uploadTable(tbltkData, l_tktim);
     }//GEN-LAST:event_btntkTimActionPerformed
 
     private void btnpThemlActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnpThemlActionPerformed
-		try {
-			AutomaticallyClosedMsgBox(1500, "Đang thêm.\nXin hãy đợi....");
-			if (BUS.PhongBUS.addloaiphong(txtpFormTenllp, txtpFormGia, taapFormMoTa))
-			{
-				ThongBao.noitice("Thêm thành công");
-				BUS.PhongBUS.updateTableL(tblpDatal);
-			}
-		} catch (Exception ex) {
-			Logger.getLogger(LeTanGUI.class.getName()).log(Level.SEVERE, null, ex);
-		}
+        try {
+            AutomaticallyClosedMsgBox(1500, "Đang thêm.\nXin hãy đợi....");
+            if (BUS.PhongBUS.addloaiphong(txtpFormTenllp, txtpFormGia, taapFormMoTa)) {
+                ThongBao.noitice("Thêm thành công");
+                BUS.PhongBUS.updateTableL(tblpDatal);
+            }
+        } catch (Exception ex) {
+            Logger.getLogger(LeTanGUI.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_btnpThemlActionPerformed
 
     private void btnpSualActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnpSualActionPerformed
-		try {
-			AutomaticallyClosedMsgBox(1500, "Đang sửa.\nXin hãy đợi....");
-			if (BUS.PhongBUS.editloaiphong(tblpDatal, txtpFormTenllp, txtpFormGia, taapFormMoTa))
-			{
-				ThongBao.noitice("Sửa thành công");
-				BUS.PhongBUS.updateTableL(tblpDatal);
-			}
-		} catch (Exception ex) {
-			Logger.getLogger(LeTanGUI.class.getName()).log(Level.SEVERE, null, ex);
-		}
+        try {
+            AutomaticallyClosedMsgBox(1500, "Đang sửa.\nXin hãy đợi....");
+            if (BUS.PhongBUS.editloaiphong(tblpDatal, txtpFormTenllp, txtpFormGia, taapFormMoTa)) {
+                ThongBao.noitice("Sửa thành công");
+                BUS.PhongBUS.updateTableL(tblpDatal);
+            }
+        } catch (Exception ex) {
+            Logger.getLogger(LeTanGUI.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_btnpSualActionPerformed
 
     private void tbtpTangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tbtpTangActionPerformed
-		if (tbtpTang.isSelected())
-			PhongBUS.updateTablebyTang(tblpData, -1);
-		else
-			PhongBUS.updateTablebyTang(tblpData, Integer.valueOf(txtpTang.getText()));
+        if (tbtpTang.isSelected()) {
+            PhongBUS.updateTablebyTang(tblpData, -1);
+        } else {
+            PhongBUS.updateTablebyTang(tblpData, Integer.valueOf(txtpTang.getText()));
+        }
     }//GEN-LAST:event_tbtpTangActionPerformed
 
     private void txtpTangKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtpTangKeyReleased
-		int key = evt.getKeyCode();
-		if (key < 48 || key > 57)
-			return;
-		PhongBUS.updateTablebyTang(tblpData, Integer.valueOf(txtpTang.getText()));
+        int key = evt.getKeyCode();
+        if (key < 48 || key > 57) {
+            return;
+        }
+        PhongBUS.updateTablebyTang(tblpData, Integer.valueOf(txtpTang.getText()));
     }//GEN-LAST:event_txtpTangKeyReleased
 
     private void tblkhDataMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblkhDataMouseClicked
-		BUS.KhachHangBUS.loadInfo(tblkhData, txtkhFormMa, txtkhFormHo, txtkhFormTen, cbbkhFormGioiTinh, dcrkhFormNgaySinh,
-				txtkhFormSDT, txtkhFormEmail, txtkhFormCMND, txtkhFormQuocTich);
+        BUS.KhachHangBUS.loadInfo(tblkhData, txtkhFormMa, txtkhFormHo, txtkhFormTen, cbbkhFormGioiTinh, dcrkhFormNgaySinh,
+                txtkhFormSDT, txtkhFormEmail, txtkhFormCMND, txtkhFormQuocTich);
     }//GEN-LAST:event_tblkhDataMouseClicked
 
     private void tblnvDataMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblnvDataMouseClicked
-		BUS.NhanVienBUS.loadInfo(tblnvData, txtnvFormMa, txtnvFormHo, txtnvFormTen, cbbnvFormGioiTinh, dcrnvFormNgaySinh,
-				txtnvFormSDT, txtnvFormEmail, dcrnvFormNgayVao, txtnvFormChucVu, txtnvFormLuong);
+        BUS.NhanVienBUS.loadInfo(tblnvData, txtnvFormMa, txtnvFormHo, txtnvFormTen, cbbnvFormGioiTinh, dcrnvFormNgaySinh,
+                txtnvFormSDT, txtnvFormEmail, dcrnvFormNgayVao, txtnvFormChucVu, txtnvFormLuong);
     }//GEN-LAST:event_tblnvDataMouseClicked
 
     private void tbltkDataMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbltkDataMouseClicked
-		BUS.TaiKhoanBUS.loadInfo(tbltkData, txttkFormTen, txttkFormMatKhau, ckbtkQuyen, txttkFormMaNV, txttkFormHo,
-				txttkFormTennv, txttkFormSDT, txttkFormEmail, txttkFormChucVu);
+        BUS.TaiKhoanBUS.loadInfo(tbltkData, txttkFormTen, txttkFormMatKhau, ckbtkQuyen, txttkFormMaNV, txttkFormHo,
+                txttkFormTennv, txttkFormSDT, txttkFormEmail, txttkFormChucVu);
     }//GEN-LAST:event_tbltkDataMouseClicked
 
     private void tblpDataMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblpDataMouseClicked
-		BUS.PhongBUS.loadInfo(tblpData, tblpDatal, txtpFormSoPhg, txtpFormTinhTrang, txtpFormTenllp, txtpFormGia, taapFormMoTa);
+        BUS.PhongBUS.loadInfo(tblpData, tblpDatal, txtpFormSoPhg, txtpFormTinhTrang, txtpFormTenllp, txtpFormGia, taapFormMoTa);
     }//GEN-LAST:event_tblpDataMouseClicked
 
     private void btnpXoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnpXoaActionPerformed
-		BUS.PhongBUS.deletephong(tblpData);
-		try {
-			AutomaticallyClosedMsgBox(1500, "Đang xóa.\nXin hãy đợi....");
-				ThongBao.noitice("Xóa thành công");
-				PhongBUS.updateTablebyTang(tblpData, -1);
-		} catch (Exception ex) {
-			Logger.getLogger(LeTanGUI.class.getName()).log(Level.SEVERE, null, ex);
-		}
+        BUS.PhongBUS.deletephong(tblpData);
+        try {
+            AutomaticallyClosedMsgBox(1500, "Đang xóa.\nXin hãy đợi....");
+            ThongBao.noitice("Xóa thành công");
+            PhongBUS.updateTablebyTang(tblpData, -1);
+        } catch (Exception ex) {
+            Logger.getLogger(LeTanGUI.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_btnpXoaActionPerformed
 
     private void tblpDatalMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblpDatalMouseClicked
-		BUS.PhongBUS.loadInfo2(tblpDatal, txtpFormTenllp, txtpFormGia, taapFormMoTa);
+        BUS.PhongBUS.loadInfo2(tblpDatal, txtpFormTenllp, txtpFormGia, taapFormMoTa);
     }//GEN-LAST:event_tblpDatalMouseClicked
 
     private void btnpXoalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnpXoalActionPerformed
-		BUS.PhongBUS.deleteloaiphong(tblpDatal);
-		try {
-			AutomaticallyClosedMsgBox(1500, "Đang xóa.\nXin hãy đợi....");
-				ThongBao.noitice("Xóa thành công");
-				PhongBUS.updateTableL(tblpDatal);
-		} catch (Exception ex) {
-			Logger.getLogger(LeTanGUI.class.getName()).log(Level.SEVERE, null, ex);
-		}
+        BUS.PhongBUS.deleteloaiphong(tblpDatal);
+        try {
+            AutomaticallyClosedMsgBox(1500, "Đang xóa.\nXin hãy đợi....");
+            ThongBao.noitice("Xóa thành công");
+            PhongBUS.updateTableL(tblpDatal);
+        } catch (Exception ex) {
+            Logger.getLogger(LeTanGUI.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_btnpXoalActionPerformed
 
     private void tbldvDataMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbldvDataMouseClicked
-		BUS.DichVuBUS.loadInfo(tbldvData, txtdvFormMa, txtdvFormTen, txtdvFormGia, taadvFormMoTa);
+        BUS.DichVuBUS.loadInfo(tbldvData, txtdvFormMa, txtdvFormTen, txtdvFormGia, taadvFormMoTa);
     }//GEN-LAST:event_tbldvDataMouseClicked
 
     private void btnhdTimActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnhdTimActionPerformed
-		BUS.HoaDonBUS.find(tblhdData, txthdFormKH, txthdFormNV, ckbhdFormNL, dcrhdNgayLap1, txthdFormGia1,
-				txthdFormGia2, txthdFormPhg, txthdFormDV);
+        //BUS.HoaDonBUS.find(tblhdData, txthdFormKH, txthdFormNV);
+
     }//GEN-LAST:event_btnhdTimActionPerformed
 
     private void tabHoaDonComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_tabHoaDonComponentShown
-		BUS.HoaDonBUS.showTabQL(txtkhFormMa, tblhdData, txthdFormKH);
+        //BUS.HoaDonBUS.showTabQL(txtkhFormMa, tblhdData, txthdFormKH);
     }//GEN-LAST:event_tabHoaDonComponentShown
 
+    private void btnkhXoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnkhXoaActionPerformed
+        // TODO add your handling code here:
+        BUS.KhachHangBUS.delete(tblkhData);
+        try {
+            AutomaticallyClosedMsgBox(1500, "Đang xóa.\nXin hãy đợi....");
+            ThongBao.noitice("Xóa thành công");
+            KhachHangBUS khBUS = new KhachHangBUS();
+            khBUS.updateTable(tblkhData);
+        } catch (Exception ex) {
+            Logger.getLogger(LeTanGUI.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btnkhXoaActionPerformed
+
+    private void btnnvXoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnnvXoaActionPerformed
+        // TODO add your handling code here:
+        BUS.NhanVienBUS.delete(tblnvData);
+        NhanVienBUS nvBUS = new NhanVienBUS();
+        try {
+            AutomaticallyClosedMsgBox(1500, "Đang xóa.\nXin hãy đợi....");
+            ThongBao.noitice("Xóa thành công");
+            nvBUS.updateTable(tblnvData);
+        } catch (Exception ex) {
+            Logger.getLogger(LeTanGUI.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btnnvXoaActionPerformed
+
+    private void btnnvRefActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnnvRefActionPerformed
+        // TODO add your handling code here:
+        NhanVienBUS nvBUS = new NhanVienBUS();
+        try {
+            nvBUS.updateTable(tblnvData);
+        } catch (Exception ex) {
+            Logger.getLogger(QuanLyGUI.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btnnvRefActionPerformed
+
+    private void btntkRefActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btntkRefActionPerformed
+        // TODO add your handling code here:
+        TaiKhoanBUS tkBUS = new TaiKhoanBUS();
+        try {
+            tkBUS.updateTable(tbltkData);
+        } catch (Exception ex) {
+            Logger.getLogger(QuanLyGUI.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btntkRefActionPerformed
+
+    private void btndvRefActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btndvRefActionPerformed
+        // TODO add your handling code here:
+        DichVuBUS dvBUS = new DichVuBUS();
+        dvBUS.updateTable(tbldvData);
+    }//GEN-LAST:event_btndvRefActionPerformed
+
+    private void btnkhRefActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnkhRefActionPerformed
+        // TODO add your handling code here:
+        KhachHangBUS khBUS = new KhachHangBUS();
+        try {
+            khBUS.updateTable(tblkhData);
+        } catch (Exception ex) {
+            Logger.getLogger(QuanLyGUI.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btnkhRefActionPerformed
+
+    private void btnhdTim1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnhdTim1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnhdTim1ActionPerformed
+
+    private void btnhdTim2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnhdTim2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnhdTim2ActionPerformed
+
+    private void txthdFormMPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txthdFormMPActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txthdFormMPActionPerformed
+
     private void tblhdDataMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblhdDataMouseClicked
-		BUS.HoaDonBUS.selectHD(tblhdData, tblhdData1, tblhdData2, txthdFormNV, dcrhdNgayLap1,
-				txthdFormGia1, txthdFormGia2);
+        // TODO add your handling code here:
+        BUS.HoaDonBUS.loadInfo(tblhdData, txthdFormKH, txthdFormNV);
+
     }//GEN-LAST:event_tblhdDataMouseClicked
+
+    private void btnhdRefActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnhdRefActionPerformed
+        // TODO add your handling code here:
+
+        PhieuThuePhongBUS ptpBUS = new PhieuThuePhongBUS();
+        PhieuDichVuBUS pdvBUS = new PhieuDichVuBUS();
+        BUS.HoaDonBUS.updateTable(tblhdData);
+        ptpBUS.updateTable(tblptpData);
+        pdvBUS.updateTable(tblpdvData);
+    }//GEN-LAST:event_btnhdRefActionPerformed
+
+    private void btntkXoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btntkXoaActionPerformed
+        BUS.TaiKhoanBUS.delete(tbltkData);
+        TaiKhoanBUS tkBUS = new TaiKhoanBUS();
+        try {
+            AutomaticallyClosedMsgBox(1500, "Đang xóa.\nXin hãy đợi....");
+            ThongBao.noitice("Xóa thành công");
+            tkBUS.updateTable(tbltkData);
+        } catch (Exception ex) {
+            Logger.getLogger(LeTanGUI.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btntkXoaActionPerformed
 
     public void AutomaticallyClosedMsgBox(long time, String text) {
         JOptionPane jop = new JOptionPane();
@@ -2168,7 +2485,7 @@ public class QuanLyGUI extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(() -> {
             try {
                 new QuanLyGUI().setVisible(true);
-                
+
             } catch (SQLException ex) {
                 Logger.getLogger(QuanLyGUI.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -2177,33 +2494,41 @@ public class QuanLyGUI extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnLogout;
+    private javax.swing.JButton btndvRef;
     private javax.swing.JButton btndvSua;
     private javax.swing.JButton btndvThem;
     private javax.swing.JButton btndvXoa;
+    private javax.swing.JButton btnhdRef;
     private javax.swing.JButton btnhdTim;
+    private javax.swing.JButton btnhdTim1;
+    private javax.swing.JButton btnhdTim2;
+    private javax.swing.JButton btnkhRef;
     private javax.swing.JButton btnkhSua;
     private javax.swing.JButton btnkhThem;
     private javax.swing.JButton btnkhTim;
+    private javax.swing.JButton btnkhXoa;
+    private javax.swing.JButton btnnvRef;
     private javax.swing.JButton btnnvSua;
     private javax.swing.JButton btnnvThem;
     private javax.swing.JButton btnnvTim;
+    private javax.swing.JButton btnnvXoa;
     private javax.swing.JButton btnpSua;
     private javax.swing.JButton btnpSual;
     private javax.swing.JButton btnpThem;
     private javax.swing.JButton btnpTheml;
     private javax.swing.JButton btnpXoa;
     private javax.swing.JButton btnpXoal;
+    private javax.swing.JButton btntkRef;
     private javax.swing.JButton btntkSua;
     private javax.swing.JButton btntkThem;
     private javax.swing.JButton btntkTim;
+    private javax.swing.JButton btntkXoa;
     private javax.swing.JComboBox<String> cbbkhFormGioiTinh;
     private javax.swing.JComboBox<String> cbbnvFormGioiTinh;
     private javax.swing.JPanel chrtkDS;
     private javax.swing.JPanel chrtkDV;
     private javax.swing.JPanel chrtkTN;
-    private javax.swing.JCheckBox ckbhdFormNL;
     private javax.swing.JCheckBox ckbtkQuyen;
-    private com.toedter.calendar.JDateChooser dcrhdNgayLap1;
     private com.toedter.calendar.JDateChooser dcrkhFormNgaySinh;
     private com.toedter.calendar.JDateChooser dcrnvFormNgaySinh;
     private com.toedter.calendar.JDateChooser dcrnvFormNgayVao;
@@ -2211,18 +2536,24 @@ public class QuanLyGUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel31;
     private javax.swing.JPanel jPanel4;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JLabel lbldvFormGia;
     private javax.swing.JLabel lbldvFormMa;
     private javax.swing.JLabel lbldvFormMoTa;
     private javax.swing.JLabel lbldvFormTen;
     private javax.swing.JLabel lbldvFormTitle;
     private javax.swing.JLabel lbldvTitle;
-    private javax.swing.JLabel lblhdFormDV;
-    private javax.swing.JLabel lblhdFormGia;
     private javax.swing.JLabel lblhdFormKH;
+    private javax.swing.JLabel lblhdFormMDV;
+    private javax.swing.JLabel lblhdFormMP;
+    private javax.swing.JLabel lblhdFormMPDV;
+    private javax.swing.JLabel lblhdFormMPTP;
     private javax.swing.JLabel lblhdFormNV;
-    private javax.swing.JLabel lblhdFormPhg;
-    private javax.swing.JLabel lblhdFormTitle;
+    private javax.swing.JLabel lblhdFormTT1;
+    private javax.swing.JLabel lblhdFormTT2;
+    private javax.swing.JLabel lblhdFormTT3;
     private javax.swing.JLabel lblhdTitle;
     private javax.swing.JLabel lblkhFormCMND;
     private javax.swing.JLabel lblkhFormEmail;
@@ -2280,9 +2611,6 @@ public class QuanLyGUI extends javax.swing.JFrame {
     private javax.swing.JSeparator sprtkChia;
     private javax.swing.JScrollPane srldvData;
     private javax.swing.JScrollPane srldvMoTa;
-    private javax.swing.JScrollPane srlhdData;
-    private javax.swing.JScrollPane srlhdData1;
-    private javax.swing.JScrollPane srlhdData2;
     private javax.swing.JScrollPane srlkhData;
     private javax.swing.JScrollPane srlnvData;
     private javax.swing.JScrollPane srlpData;
@@ -2304,23 +2632,23 @@ public class QuanLyGUI extends javax.swing.JFrame {
     private javax.swing.JTabbedPane tabquanly;
     private javax.swing.JTable tbldvData;
     private javax.swing.JTable tblhdData;
-    private javax.swing.JTable tblhdData1;
-    private javax.swing.JTable tblhdData2;
     private javax.swing.JTable tblkhData;
     private javax.swing.JTable tblnvData;
     private javax.swing.JTable tblpData;
     private javax.swing.JTable tblpDatal;
+    private javax.swing.JTable tblpdvData;
+    private javax.swing.JTable tblptpData;
     private javax.swing.JTable tbltkData;
     private javax.swing.JToggleButton tbtpTang;
     private javax.swing.JTextField txtdvFormGia;
     private javax.swing.JTextField txtdvFormMa;
     private javax.swing.JTextField txtdvFormTen;
-    private javax.swing.JTextField txthdFormDV;
-    private javax.swing.JTextField txthdFormGia1;
-    private javax.swing.JTextField txthdFormGia2;
     private javax.swing.JTextField txthdFormKH;
+    private javax.swing.JTextField txthdFormMDV;
+    private javax.swing.JTextField txthdFormMP;
+    private javax.swing.JTextField txthdFormMPDV;
+    private javax.swing.JTextField txthdFormMPTP;
     private javax.swing.JTextField txthdFormNV;
-    private javax.swing.JTextField txthdFormPhg;
     private javax.swing.JTextField txtkhFormCMND;
     private javax.swing.JTextField txtkhFormEmail;
     private javax.swing.JTextField txtkhFormHo;

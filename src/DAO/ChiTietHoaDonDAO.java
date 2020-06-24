@@ -13,6 +13,7 @@ import DTO.ChiTietHoaDon;
 import DTO.PhieuDichVu;
 import DTO.PhieuThuePhong;
 import GUI.ThongBao;
+import UTILS.Database;
 
 /**
  *
@@ -23,6 +24,7 @@ public class ChiTietHoaDonDAO
 	public static ArrayList<ChiTietHoaDon> load(int mahd)
 	{
 		ArrayList<ChiTietHoaDon> l_chitiet = new ArrayList<>();
+                //ArrayList<Integer> l_mahd = new ArrayList<>();
 		ArrayList<Integer> l_maptp = new ArrayList<>();
 		ArrayList<Integer> l_mapdv = new ArrayList<>();
 		
@@ -36,7 +38,7 @@ public class ChiTietHoaDonDAO
 			while(rs.next())
 			{
 				ChiTietHoaDon cthd = new ChiTietHoaDon(rs.getInt(1));
-				cthd.setThanhtien(rs.getInt(5));
+				cthd.setM_thanhtien(rs.getInt(5));
 				
 				l_maptp.add(rs.getInt(3));
 				l_mapdv.add(rs.getInt(4));
@@ -55,14 +57,51 @@ public class ChiTietHoaDonDAO
 		{
 			int id = l_maptp.get(i);
 			if(id != 0)
-				l_chitiet.get(i).setPhieuThuePhong(PhieuThuePhongDAO.get(id));
+				l_chitiet.get(i).setM_ptp(PhieuThuePhongDAO.get(id));
 			
 			id = l_mapdv.get(i);
 			if(id != 0)
-				l_chitiet.get(i).setPhieuDichVu(null);
+				l_chitiet.get(i).setM_pdv(null);
 		}
 		
 		return l_chitiet;
+	}
+        
+	public static ChiTietHoaDon get(int macthd)
+	{
+		Database DB = new Database();
+		DB.connect();
+                
+                ArrayList<ChiTietHoaDon> l_chitiet = new ArrayList<>();
+		ArrayList<Integer> l_maptp = new ArrayList<>();
+		ArrayList<Integer> l_mapdv = new ArrayList<>();
+
+		ResultSet rs = DB.execution("SELECT * FROM ChiTietHoaDon WHERE macthd="+macthd);
+		
+		try
+		{
+			while(rs.next())
+			{
+				ChiTietHoaDon cthd = new ChiTietHoaDon(rs.getInt(1));
+				cthd.setM_thanhtien(rs.getInt(5));
+				
+				l_maptp.add(rs.getInt(3));
+				l_mapdv.add(rs.getInt(4));
+				l_chitiet.add(cthd);
+				
+				DB.disconnect();
+				
+				return cthd;
+			}
+		}
+		catch(SQLException e)
+		{
+			System.out.println("[ChiTietHoaDonDAO:get] error sql: "+e);
+		}
+		
+		DB.disconnect();
+		
+		return null;
 	}
 	
 	public static ChiTietHoaDon getcthdbypdv(PhieuDichVu pdv)
@@ -71,7 +110,7 @@ public class ChiTietHoaDonDAO
 		DB.connect();
 		String sql="select cthd.macthd,cthd.mahd,cthd.maptp,cthd.mapdv, cthd.thanhtien\n" +
 					"from PhieuDichVu pdv,chitiethoadon cthd\n" +
-					"where pdv.macthd=cthd.macthd and pdv.mapdv='"+pdv.getMaPDV()+"' ";
+					"where pdv.macthd=cthd.macthd and pdv.mapdv='"+pdv.getM_mapdv()+"' ";
 		ResultSet rs = DB.execution(sql);
 		try
 		{
@@ -79,9 +118,9 @@ public class ChiTietHoaDonDAO
 			{
 				ChiTietHoaDon cthd = new ChiTietHoaDon(rs.getInt(1));
 				PhieuThuePhong ptp=PhieuThuePhongDAO.get(rs.getInt(3));
-				cthd.setPhieuDichVu(null);
-				cthd.setPhieuThuePhong(ptp);
-				cthd.setThanhtien(rs.getInt(5));
+				cthd.setM_pdv(null);
+				cthd.setM_ptp(ptp);
+				cthd.setM_thanhtien(rs.getInt(5));
 				DB.disconnect();
 				return cthd;
 			}
@@ -99,17 +138,17 @@ public class ChiTietHoaDonDAO
 		Database DB = new Database();
 		DB.connect();
 		
-                if (cthd.getPhieuDichVu() != null)
+                if (cthd.getM_pdv() != null)
                 {
                     String sql = "INSERT INTO chitiethoadon (mahd, maptp, mapdv, thanhtien) VALUES ('";
                     sql += mahd+"', '";
-                    sql += cthd.getPhieuThuePhong().getMaPTP()+"', '";
-                    sql += cthd.getPhieuDichVu().getMaPDV()+"', '0');";
+                    sql += cthd.getM_ptp().getMaPTP()+"', '";
+                    sql += cthd.getM_pdv().getM_mapdv()+"', '0');";
                     DB.update(sql);
                 } else {
                     String sql = "INSERT INTO chitiethoadon (mahd, maptp, thanhtien) VALUES ('";
                     sql += mahd+"', '";
-                    sql += cthd.getPhieuThuePhong().getMaPTP()+"', '0');";
+                    sql += cthd.getM_ptp().getMaPTP()+"', '0');";
                     DB.update(sql);
                 }
                 
@@ -130,10 +169,10 @@ public class ChiTietHoaDonDAO
 		DB.connect();
 		
 		String sql = "UPDATE ChiTietHoaDon SET ";
-		sql += "maptp='"							+cthd.getPhieuThuePhong().getMaPTP();
+		sql += "maptp='"							+cthd.getM_ptp().getMaPTP();
 		sql += "', mapdv='-1";
-		sql += "', thanhtien='"					+cthd.getThanhtien();
-		sql += "' WHERE ChiTietHoaDon.macthd = "	+cthd.getMaCTHD()+";";
+		sql += "', thanhtien='"					+cthd.getM_thanhtien();
+		sql += "' WHERE ChiTietHoaDon.macthd = "	+cthd.getM_macthd()+";";
 		
 		DB.update(sql);
 		DB.disconnect();
@@ -164,5 +203,5 @@ public class ChiTietHoaDonDAO
 		
 		return -1;
 	}
-	
+
 }

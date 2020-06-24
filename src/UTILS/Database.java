@@ -3,8 +3,8 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package DAO;
-
+package UTILS;
+import javax.swing.JOptionPane;
 import GUI.ThongBao;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -23,20 +23,22 @@ public class Database
     private static Statement stmt;
     private static ResultSet rs;
 	
-	
-	void connect()
+    /**
+     *
+     */
+    public static Connection connect()
 	{
 		String databaseName = "quanlykhachsan";
 		String username = "root";
-		String password = "";
+		String password = "12345";
 
 		try
 		{
                     Class.forName("com.mysql.jdbc.Driver");
 			String url = "jdbc:mysql://localhost:3306/"+databaseName+"?useUnicode=true&characterEncoding=UTF-8";
-			conn = DriverManager.getConnection(url, username, password);
-			
+			conn = DriverManager.getConnection(url, username, password);			
 			stmt = conn.createStatement();
+                        //System.out.println("ok");
 		}
 		catch(ClassNotFoundException e)
 		{
@@ -48,9 +50,10 @@ public class Database
 			ThongBao.error("[Database:connect] Lỗi kết nối database:\n"+e);
 			System.exit(1);
 		}
+        return conn;
 	}
 	
-	ResultSet execution(String sql)
+	public  static ResultSet execution(String sql)
 	{
 		try
 		{
@@ -63,7 +66,7 @@ public class Database
 		return rs;
 	}
 	
-	void update(String sql)
+	public static void update(String sql)
 	{
 		try
 		{
@@ -72,10 +75,11 @@ public class Database
 		catch(SQLException e)
 		{
 			ThongBao.warning("[Database:update] "+e);
+                    //JOptionPane.showMessageDialog(null, "Loi");
 		}
 	}
 	
-	void disconnect()
+	public static void disconnect()
 	{
 		try
 		{
@@ -89,5 +93,10 @@ public class Database
 			ThongBao.warning("[Database:disconnect] "+e);
 		}
 	}
+        public static void main(String[] args)
+        {
+            Database db=new Database();
+            db.connect();
+        }
 
 }

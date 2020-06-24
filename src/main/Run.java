@@ -6,10 +6,6 @@ import GUI.LeTanGUI;
 import GUI.QuanLyGUI;
 import java.sql.SQLException;
 
-/**
- *
- * @author Pro One Laptop
- */
 public class Run
 {
     public static void main(String[] args)
@@ -24,10 +20,10 @@ public class Run
 		try
 		{
 			if (quanly)
-				TaiKhoanBUS.login("nv2", "123");
-			else
-				TaiKhoanBUS.login("nv1", "123");
-			
+				TaiKhoanBUS.login("Admin", "123");
+                        else{
+                            TaiKhoanBUS.login("Letan001", "321");
+                        }
 			if (TaiKhoanBUS.getUser().getQuyen() == 1)
 			{
 				QuanLyGUI nv= new QuanLyGUI();                
